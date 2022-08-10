@@ -1,0 +1,6 @@
+framework module Voodu {
+  umbrella header "Voodu-umbrella.h"
+
+  export *
+  module * { export * }
+}

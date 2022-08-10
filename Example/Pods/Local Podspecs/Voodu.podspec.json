@@ -1,0 +1,25 @@
+{
+  "name": "Voodu",
+  "version": "1.0.0",
+  "summary": "TODO",
+  "description": "TODO",
+  "homepage": "https://github.com/mitchtreece/Voodu",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Mitch Treece": "mitchtreece@me.com"
+  },
+  "source": {
+    "git": "https://github.com/mitchtreece/Voodu.git",
+    "tag": "1.0.0"
+  },
+  "social_media_url": "https://twitter.com/mitchtreece",
+  "swift_versions": "5",
+  "platforms": {
+    "ios": "13.0"
+  },
+  "source_files": "Voodu/Classes/**/*",
+  "swift_version": "5"
+}

@@ -1,0 +1,16 @@
+PODS:
+  - Voodu (1.0.0)
+
+DEPENDENCIES:
+  - Voodu (from `../`)
+
+EXTERNAL SOURCES:
+  Voodu:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Voodu: 4629b643541808ab23ece46ec163c865062fd3af
+
+PODFILE CHECKSUM: b01a33fc23d7860dc1bf6b09e371c0c4fc9d5444
+
+COCOAPODS: 1.11.3

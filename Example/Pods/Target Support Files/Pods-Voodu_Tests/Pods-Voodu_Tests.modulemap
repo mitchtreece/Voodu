@@ -1,0 +1,6 @@
+framework module Pods_Voodu_Tests {
+  umbrella header "Pods-Voodu_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
