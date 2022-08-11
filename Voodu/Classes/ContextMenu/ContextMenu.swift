@@ -7,29 +7,29 @@
 
 import UIKit
 
-public class ContextMenu: NSObject, ContextMenuInteraction {
+public class ContextMenu {
     
     public typealias Provider = (inout ContextMenuBuildable)->()
     public typealias PreviewProvider = ([String: Any])->UIViewController?
     public typealias PreviewCommitter = ([String: Any], UIViewController?)->()
     public typealias TargetedPreviewProvider = ([String: Any])->UITargetedPreview?
     
-    private var title: String?
-    private var identifier: String?
-    private var configurationIdentifier: NSCopying?
-    private var options: UIMenu.Options = []
-    private var elements: [UIMenuElement] = []
-    private var previewProvider: ContextMenu.PreviewProvider?
-    private var previewCommitter: ContextMenu.PreviewCommitter?
-    private var previewCommitStyle: UIContextMenuInteractionCommitStyle = .pop
-    private var targetedHighlightPreviewProvider: ContextMenu.TargetedPreviewProvider?
-    private var targetedDismissPreviewProvider: ContextMenu.TargetedPreviewProvider?
-    private var includeSuggestedElements: Bool = false
-    private var willPresent: (()->())?
-    private var willDismiss: (()->())?
+    internal private(set) var title: String?
+    internal private(set) var identifier: String?
+    internal private(set) var configurationIdentifier: NSCopying?
+    internal private(set) var options: UIMenu.Options = []
+    internal private(set) var elements: [UIMenuElement] = []
+    internal private(set) var previewProvider: ContextMenu.PreviewProvider?
+    internal private(set) var previewCommitter: ContextMenu.PreviewCommitter?
+    internal private(set) var previewCommitStyle: UIContextMenuInteractionCommitStyle = .pop
+    internal private(set) var targetedHighlightPreviewProvider: ContextMenu.TargetedPreviewProvider?
+    internal private(set) var targetedDismissPreviewProvider: ContextMenu.TargetedPreviewProvider?
+    internal private(set) var includeSuggestedElements: Bool = false
+    internal private(set) var willPresent: (()->())?
+    internal private(set) var willDismiss: (()->())?
     
     @available(iOS 16, *)
-    private var elementSize: UIMenu.ElementSize {
+    internal private(set) var elementSize: UIMenu.ElementSize {
         get {
             return (self._elementSize as? UIMenu.ElementSize) ?? .large
         }
@@ -40,20 +40,44 @@ public class ContextMenu: NSObject, ContextMenuInteraction {
     
     private var _elementSize: Any?
     
-    private var provider: Provider
-    internal weak var interaction: UIContextMenuInteraction?
-    private(set) var data = [String: Any]()
+    //////
+    
+    private let provider: Provider
+    private var delegate: ContextMenuInteractionDelegate!
+    
+    internal private(set) weak var contextMenuInteraction: UIContextMenuInteraction?
+    
+    internal var data = [String: Any]()
     
     public init(provider: @escaping Provider) {
 
         self.provider = provider
+        self.delegate = ContextMenuInteractionDelegate(contextMenu: self)
         
-        super.init()
-
         var buildable: ContextMenuBuildable = ContextMenuBuilder()
         self.provider(&buildable)
         update(using: buildable)
 
+    }
+    
+    public func interaction() -> ContextMenuInteraction {
+        return ContextMenuInteraction(contextMenu: self)
+    }
+    
+    public func tableInteraction() -> ContextMenuTableInteraction {
+        return ContextMenuTableInteraction(contextMenu: self)
+    }
+    
+    public func collectionInteraction() -> ContextMenuCollectionInteraction {
+        return ContextMenuCollectionInteraction(contextMenu: self)
+    }
+
+    internal func setupMenuInteraction() -> UIContextMenuInteraction {
+        
+        let interaction = UIContextMenuInteraction(delegate: self.delegate)
+        self.contextMenuInteraction = interaction
+        return interaction
+        
     }
     
     private func update(using buildable: ContextMenuBuildable) {
@@ -78,7 +102,7 @@ public class ContextMenu: NSObject, ContextMenuInteraction {
         
     }
     
-    private func configuration() -> UIContextMenuConfiguration {
+    internal func configuration() -> UIContextMenuConfiguration {
         
         // Ask our provider for an updated layout
         
@@ -144,75 +168,6 @@ public class ContextMenu: NSObject, ContextMenuInteraction {
         }
                 
         return menu
-
-    }
-    
-}
-
-extension ContextMenu: UIContextMenuInteractionDelegate {
-    
-    public func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
-                                       configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-
-        return configuration()
-
-    }
-
-    public func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
-                                       willDisplayMenuFor configuration: UIContextMenuConfiguration,
-                                       animator: UIContextMenuInteractionAnimating?) {
-
-        self.willPresent?()
-
-    }
-
-    public func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
-                                       willEndFor configuration: UIContextMenuConfiguration,
-                                       animator: UIContextMenuInteractionAnimating?) {
-
-        self.willDismiss?()
-
-    }
-
-    public func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
-                                       previewForHighlightingMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-
-        return self.targetedHighlightPreviewProvider?(self.data)
-
-    }
-
-    public func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
-                                       previewForDismissingMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-
-        return self.targetedDismissPreviewProvider?(self.data)
-
-    }
-
-    public func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
-                                       willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration,
-                                       animator: UIContextMenuInteractionCommitAnimating) {
-
-        // If this protocol function is implemented,
-        // the system always performs some kind of animation.
-        // This isn't ideal, but doesn't hurt anything.
-        //
-        // Need to find a way to conditionally adopt this function
-        // Only when needed.
-        //
-        // responds(toSelector:) fuckery?
-
-        guard let committer = self.previewCommitter else { return }
-
-        animator.preferredCommitStyle = self.previewCommitStyle
-
-        animator.addCompletion {
-
-            committer(
-                self.data,
-                animator.previewViewController
-            )
-
-        }
 
     }
     

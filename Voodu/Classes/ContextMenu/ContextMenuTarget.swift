@@ -25,14 +25,12 @@ public extension ContextMenuTarget {
         if let existingInteraction = self.interactions.first(where: { $0 is UIContextMenuInteraction }) {
             removeInteraction(existingInteraction)
         }
-                        
-        let interaction = UIContextMenuInteraction(delegate: contextMenu)
-        
-        contextMenu.interaction = interaction
-        
+                                        
+        let interaction = contextMenu.setupMenuInteraction()
         addInteraction(interaction)
         
         return contextMenu
+            .interaction()
         
     }
     
@@ -43,13 +41,18 @@ public extension ContextMenuTarget {
         
     }
     
-    func removeContextMenu(for interaction: ContextMenuInteraction) {
+    func removeContextMenu(_ contextMenu: ContextMenu) {
         
-        guard let contextMenu = interaction as? ContextMenu,
-              let uiInteraction = contextMenu.interaction else { return }
+        guard let interaction = contextMenu.contextMenuInteraction,
+              let view = self as? UIView,
+              interaction.view == view else { return }
         
-        removeInteraction(uiInteraction)
+        removeInteraction(interaction)
         
     }
     
+    func removeContextMenuInteraction(_ interaction: ContextMenuInteraction) {
+        removeContextMenu(interaction.contextMenu)
+    }
+
 }

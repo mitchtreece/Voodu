@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Voodu
 //
-//  Created by Mitch Treece on 08/10/2022.
-//  Copyright (c) 2022 Mitch Treece. All rights reserved.
+//  Created by Mitch Treece on 8/10/2022.
+//  Copyright © 2022 Mitch Treece. All rights reserved.
 //
 
 import UIKit

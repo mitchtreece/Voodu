@@ -11,6 +11,9 @@
 		0CBD670B97C1B563F4B071F188C63C27 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		0D494328804054321366ADFC90B4B081 /* ContextMenuInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428657085361F4240C4B51CB94CEF26 /* ContextMenuInteraction.swift */; };
 		1D1244B94C79C4E2D06842FE94069237 /* ShortcutMenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E913F5FEA39552515F2880498F940 /* ShortcutMenuBuilder.swift */; };
+		26A6B96F28A4D852003AF283 /* ContextMenuTableInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6B96E28A4D852003AF283 /* ContextMenuTableInteraction.swift */; };
+		26A6B97128A4DA7F003AF283 /* ContextMenuCollectionInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6B97028A4DA7F003AF283 /* ContextMenuCollectionInteraction.swift */; };
+		26A6B97328A4E208003AF283 /* ContextMenuInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A6B97228A4E208003AF283 /* ContextMenuInteractionDelegate.swift */; };
 		26F3FF31CA539E033CFE481D02540645 /* Voodu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9130A7ECD70ED6E4B615D938AD7FD /* Voodu-dummy.m */; };
 		329A94FFE6E9371A5CDE5D351CD3E8D3 /* UIButton+MenuTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692D642AC67A0A4E0F9DF0AF972267DF /* UIButton+MenuTarget.swift */; };
 		396EB898B05BE65547A06FDDE6CD61FD /* ShortcutMenuItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BC58FBD9FCCDCF065AFD070216C789 /* ShortcutMenuItemBuilder.swift */; };
@@ -54,6 +57,9 @@
 		0BFBC367A8BD47596DD3F874F419759C /* Pods-Voodu_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Voodu_Tests.modulemap"; sourceTree = "<group>"; };
 		12BC58FBD9FCCDCF065AFD070216C789 /* ShortcutMenuItemBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShortcutMenuItemBuilder.swift; sourceTree = "<group>"; };
 		1EA02138375AE393F9B90EE1D373FAEB /* Voodu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Voodu-prefix.pch"; sourceTree = "<group>"; };
+		26A6B96E28A4D852003AF283 /* ContextMenuTableInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuTableInteraction.swift; sourceTree = "<group>"; };
+		26A6B97028A4DA7F003AF283 /* ContextMenuCollectionInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuCollectionInteraction.swift; sourceTree = "<group>"; };
+		26A6B97228A4E208003AF283 /* ContextMenuInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuInteractionDelegate.swift; sourceTree = "<group>"; };
 		2F090D9D613104A0BB3CD2A290F4AF21 /* MenuElementContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuElementContainer.swift; path = Voodu/Classes/MenuElementContainer.swift; sourceTree = "<group>"; };
 		30D1BE65A1742871193BC805B47D3745 /* Pods-Voodu_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Voodu_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		3615914F735D70E5DD04A3D06BA692BD /* Voodu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Voodu-umbrella.h"; sourceTree = "<group>"; };
@@ -133,8 +139,11 @@
 			children = (
 				C343F315E50E0E253832E35BBB14F3CA /* ContextMenu.swift */,
 				D64C52612636D9D7207FE1F9BBA7C011 /* ContextMenuBuilder.swift */,
-				B428657085361F4240C4B51CB94CEF26 /* ContextMenuInteraction.swift */,
 				A962E11F6B2D054CB7919C1E6649B77E /* ContextMenuTarget.swift */,
+				B428657085361F4240C4B51CB94CEF26 /* ContextMenuInteraction.swift */,
+				26A6B96E28A4D852003AF283 /* ContextMenuTableInteraction.swift */,
+				26A6B97028A4DA7F003AF283 /* ContextMenuCollectionInteraction.swift */,
+				26A6B97228A4E208003AF283 /* ContextMenuInteractionDelegate.swift */,
 			);
 			name = ContextMenu;
 			path = Voodu/Classes/ContextMenu;
@@ -438,7 +447,9 @@
 			files = (
 				8145E896CE8BC6A9A5309A6D2B3D1AE5 /* ActionBuilder.swift in Sources */,
 				C061AE7E57ED8980EF334B54A054E4BA /* ContextMenu.swift in Sources */,
+				26A6B97328A4E208003AF283 /* ContextMenuInteractionDelegate.swift in Sources */,
 				6F7519DD96A4EA7BDA09E2E9C5E03E0D /* ContextMenuBuilder.swift in Sources */,
+				26A6B96F28A4D852003AF283 /* ContextMenuTableInteraction.swift in Sources */,
 				0D494328804054321366ADFC90B4B081 /* ContextMenuInteraction.swift in Sources */,
 				8E21F1D08B67B5AAD78877B0F9E463A3 /* ContextMenuTarget.swift in Sources */,
 				6E0C5EAACF995EB2DFC051E6F57A69AF /* Menu.swift in Sources */,
@@ -446,6 +457,7 @@
 				42A167B059EC2C9B9705052C36D5D0F2 /* MenuElementContainer.swift in Sources */,
 				D5D005F9FA12B7911AE62841B23CC0B6 /* MenuInteraction.swift in Sources */,
 				7DE3034DE6AE2C215091E433CA045539 /* MenuTarget.swift in Sources */,
+				26A6B97128A4DA7F003AF283 /* ContextMenuCollectionInteraction.swift in Sources */,
 				1D1244B94C79C4E2D06842FE94069237 /* ShortcutMenuBuilder.swift in Sources */,
 				396EB898B05BE65547A06FDDE6CD61FD /* ShortcutMenuItemBuilder.swift in Sources */,
 				43E8E6E69E82D01FB145DC8BB2280FA8 /* UIApplication+ShortcutMenu.swift in Sources */,

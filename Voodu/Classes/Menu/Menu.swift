@@ -7,21 +7,21 @@
 
 import UIKit
 
-@available(iOS 14, *)
-public class Menu: NSObject, MenuInteraction {
+//@available(iOS 14, *)
+public class Menu: NSObject {
     
     public typealias Provider = (inout MenuBuildable)->()
  
-    private var title: String = ""
-    private var image: UIImage?
-    private var identifier: String?
-    private var options: UIMenu.Options = []
-    private var elements: [UIMenuElement] = []
+    internal private(set) var title: String = ""
+    internal private(set) var image: UIImage?
+    internal private(set) var identifier: String?
+    internal private(set) var options: UIMenu.Options = []
+    internal private(set) var elements: [UIMenuElement] = []
     internal private(set) var willPresent: (()->())?
     internal private(set) var willDismiss: (()->())?
     
     @available(iOS 15, *)
-    private var subtitle: String? {
+    internal private(set) var subtitle: String? {
         get {
             return self._subtitle
         }
@@ -31,7 +31,7 @@ public class Menu: NSObject, MenuInteraction {
     }
     
     @available(iOS 16, *)
-    private var elementSize: UIMenu.ElementSize {
+    internal private(set) var elementSize: UIMenu.ElementSize {
         get {
             return (self._elementSize as? UIMenu.ElementSize) ?? .large
         }
@@ -44,6 +44,7 @@ public class Menu: NSObject, MenuInteraction {
     private var _elementSize: Any?
     
     private var provider: Provider
+    
     internal private(set) weak var target: MenuTarget?
     
     public init(provider: @escaping Provider) {
@@ -58,9 +59,13 @@ public class Menu: NSObject, MenuInteraction {
 
     }
     
+    public func interaction() -> MenuInteraction {
+        return MenuInteraction(menu: self)
+    }
+    
     // MARK: Private
     
-    internal func setup(for target: MenuTarget) {
+    internal func setup(target: MenuTarget) {
         
         self.target = target
         self.target?.swizzleMenuIfNeeded()

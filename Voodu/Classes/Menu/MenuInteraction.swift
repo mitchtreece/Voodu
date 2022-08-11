@@ -7,17 +7,20 @@
 
 import UIKit
 
-public protocol MenuInteraction {}
-
-@available(iOS 14, *)
-public extension MenuInteraction {
+public struct MenuInteraction {
     
+    internal private(set) var menu: Menu!
+    
+    internal init(menu: Menu) {
+        self.menu = menu
+    }
+    
+    @available(iOS 14, *)
     func updateVisible(block: (UIMenu)->UIMenu) {
         
-        guard let menu = self as? Menu,
-              let menuTarget = menu.target else { return }
+        guard let target = self.menu.target else { return }
         
-        menuTarget
+        target
             .contextMenuInteraction?
             .updateVisibleMenu(block)
         
@@ -25,10 +28,9 @@ public extension MenuInteraction {
     
     func dismiss() {
         
-        guard let menu = self as? Menu,
-              let menuTarget = menu.target else { return }
+        guard let target = self.menu.target else { return }
         
-        menuTarget
+        target
             .contextMenuInteraction?
             .dismissMenu()
         

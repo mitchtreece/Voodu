@@ -7,48 +7,44 @@
 
 import UIKit
 
-public protocol ContextMenuInteraction {}
-
-extension ContextMenuInteraction {
+public struct ContextMenuInteraction {
+    
+    internal let contextMenu: ContextMenu
+    
+    internal init(contextMenu: ContextMenu) {
+        self.contextMenu = contextMenu
+    }
         
     @discardableResult
     func add(to target: ContextMenuTarget) -> ContextMenuInteraction {
-        
-        let contextMenu = self as! ContextMenu
-        
+                
         return target
-            .addContextMenu(contextMenu)
+            .addContextMenu(self.contextMenu)
                 
     }
     
     func removeFromTarget() {
         
-        let contextMenu = self as! ContextMenu
-
-        contextMenu
-            .interaction?
+        self.contextMenu
+            .contextMenuInteraction?
             .view?
-            .removeContextMenu(for: self)
+            .removeContextMenu(self.contextMenu)
         
     }
     
     @available(iOS 14, *)
     public func updateVisible(block: (UIMenu)->UIMenu) {
-        
-        let contextMenu = self as! ContextMenu
-        
-        contextMenu
-            .interaction?
+                
+        self.contextMenu
+            .contextMenuInteraction?
             .updateVisibleMenu(block)
         
     }
     
     public func dismiss() {
-        
-        let contextMenu = self as! ContextMenu
-        
-        contextMenu
-            .interaction?
+                
+        self.contextMenu
+            .contextMenuInteraction?
             .dismissMenu()
         
     }

@@ -7,7 +7,6 @@
 
 import UIKit
 
-@available(iOS 14, *)
 public protocol MenuTarget: AnyObject {
     
     var menu: UIMenu? { get set }
@@ -15,13 +14,14 @@ public protocol MenuTarget: AnyObject {
 
 }
 
-@available(iOS 14, *)
 public extension MenuTarget {
     
     func addMenu(_ menu: Menu) -> MenuInteraction {
 
-        menu.setup(for: self)
+        menu.setup(target: self)
+        
         return menu
+            .interaction()
         
     }
 
@@ -34,8 +34,7 @@ public extension MenuTarget {
 
     func removeMenu(for interaction: MenuInteraction) {
         
-        guard let interactionMenu = interaction as? Menu,
-              interactionMenu == self.targetMenu else { return }
+        guard interaction.menu == self.targetMenu else { return }
         
         self.targetMenu = nil
         self.menu = nil
@@ -44,11 +43,12 @@ public extension MenuTarget {
     
 }
 
-@available(iOS 14, *)
 internal extension MenuTarget {
     
     var targetMenu: Menu? {
         get {
+            
+            guard #available(iOS 14, *) else { return nil }
             
             if let button = self as? UIButton {
                 return button.buttonMenu
@@ -62,6 +62,8 @@ internal extension MenuTarget {
         }
         set {
             
+            guard #available(iOS 14, *) else { return }
+            
             if let button = self as? UIButton {
                 button.buttonMenu = newValue
             }
@@ -73,6 +75,8 @@ internal extension MenuTarget {
     }
 
     func swizzleMenuIfNeeded() {
+        
+        guard #available(iOS 14, *) else { return }
         
         if let _ = self as? UIButton {
             UIButton.swizzleMenuIfNeeded()

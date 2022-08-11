@@ -3,7 +3,7 @@
 //  Voodu
 //
 //  Created by Mitch Treece on 8/8/22.
-//  Copyright (c) 2022 Mitch Treece. All rights reserved.
+//  Copyright © 2022 Mitch Treece. All rights reserved.
 //
 
 import UIKit
