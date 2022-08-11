@@ -14,6 +14,19 @@ public struct ContextMenuCollectionInteraction {
     internal init(contextMenu: ContextMenu) {
         self.contextMenu = contextMenu
     }
+        
+    // MARK: Data
+    
+    @discardableResult
+    public func setData(_ data: Any?,
+                        forKey key: String) -> Self {
+        
+        self.contextMenu.data[key] = data
+        return self
+        
+    }
+    
+    // MARK: UICollectionView
     
     public func configuration(in collectionView: UICollectionView,
                               indexPath: IndexPath,
@@ -45,16 +58,16 @@ public struct ContextMenuCollectionInteraction {
         
     }
     
-    public func highlightPreview(in collectionView: UICollectionView,
-                                 configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+    public func highlightingPreview(in collectionView: UICollectionView,
+                                    configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
         return self.contextMenu
             .targetedHighlightPreviewProvider?(self.contextMenu.data)
         
     }
     
-    public func dismissPreview(in collectionView: UICollectionView,
-                               configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+    public func dismissingPreview(in collectionView: UICollectionView,
+                                  configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
         self.contextMenu
             .targetedDismissPreviewProvider?(self.contextMenu.data)

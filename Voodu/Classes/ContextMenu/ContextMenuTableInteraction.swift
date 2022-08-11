@@ -15,6 +15,19 @@ public struct ContextMenuTableInteraction {
         self.contextMenu = contextMenu
     }
     
+    // MARK: Data
+    
+    @discardableResult
+    public func setData(_ data: Any?,
+                        forKey key: String) -> Self {
+        
+        self.contextMenu.data[key] = data
+        return self
+        
+    }
+    
+    // MARK: UITableView
+    
     public func configuration(in tableView: UITableView,
                               indexPath: IndexPath,
                               point: CGPoint) -> UIContextMenuConfiguration {

@@ -27,6 +27,34 @@ public protocol ContextMenuBuildable: MenuElementContainer {
     
 }
 
+public extension ContextMenuBuildable {
+    
+    mutating func addPreview(_ provider: @escaping ContextMenu.PreviewProvider) {
+        self.previewProvider = provider
+    }
+    
+    mutating func addPreviewCommitter(_ committer: @escaping ContextMenu.PreviewCommitter) {
+        self.previewCommitter = committer
+    }
+    
+    mutating func addHighlightingPreview(_ provider: @escaping ContextMenu.TargetedPreviewProvider) {
+        self.targetedHighlightPreviewProvider = provider
+    }
+    
+    mutating func addDismissingPreview(_ provider: @escaping ContextMenu.TargetedPreviewProvider) {
+        self.targetedDismissPreviewProvider = provider
+    }
+    
+    mutating func addPresentHandler(_ handler: @escaping ()->()) {
+        self.willPresent = handler
+    }
+    
+    mutating func addDismissHandler(_ handler: @escaping ()->()) {
+        self.willDismiss = handler
+    }
+    
+}
+
 internal struct ContextMenuBuilder: ContextMenuBuildable {
     
     var title: String?

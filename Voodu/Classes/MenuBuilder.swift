@@ -14,13 +14,9 @@ public protocol MenuBuildable: MenuElementContainer {
     var title: String { get set }
     var image: UIImage? { get set }
     var identifier: String? { get set }
-    var options: UIMenu.Options { get set }
-    
-    // Only applies to MenuTarget's, not
-    // directly building a `UIMenu`.
+    var options: UIMenu.Options { get set }    
     var willPresent: (()->())? { get set }
     var willDismiss: (()->())? { get set }
-    ////////////////////////////////////
     
     @available(iOS 15, *)
     var subtitle: String? { get set }
@@ -28,6 +24,18 @@ public protocol MenuBuildable: MenuElementContainer {
     @available(iOS 16, *)
     var elementSize: UIMenu.ElementSize { get set }
         
+}
+
+public extension MenuBuildable {
+    
+    mutating func addPresentHandler(_ handler: @escaping ()->()) {
+        self.willPresent = handler
+    }
+    
+    mutating func addDismissHandler(_ handler: @escaping ()->()) {
+        self.willDismiss = handler
+    }
+    
 }
 
 internal struct MenuBuilder: MenuBuildable {

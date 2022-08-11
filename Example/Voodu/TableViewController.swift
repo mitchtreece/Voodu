@@ -13,7 +13,7 @@ class TableViewController: UITableViewController {
     
     private let colors: [Color] = Array(
         repeating: Color.allCases,
-        count: 16
+        count: 10
     )
     .flatMap { $0 }
     .shuffled()
@@ -26,7 +26,7 @@ class TableViewController: UITableViewController {
         
         setupMenu()
         
-        self.tableView.register(
+        self.tableView!.register(
             UITableViewCell.self,
             forCellReuseIdentifier: "cell"
         )
@@ -35,17 +35,52 @@ class TableViewController: UITableViewController {
     
     private func setupMenu() {
         
-        self.menuInteraction = ContextMenu { menu in
+        self.menuInteraction = ContextMenu { [weak self] menu in
+            
+            menu.addPreviewCommitter { data, vc in
+                
+                guard let color = data["color"] as? Color else { return }
+                self?.presentColor(color)
+                
+            }
             
             menu.addAction { action in
+                                
+                action.title = "Tap the preview to present it"
+                action.image = UIImage(systemName: "hand.tap")
                 
-                action.title = "Hello, world!"
-                action.handler = { _ in }
+//                action.handler = { _ in
+//
+//                    // todo pass data to addAction(..)
+//                    // get color and present vc
+//
+//                }
                 
             }
             
         }
         .tableInteraction()
+        
+    }
+    
+    private func presentColor(_ color: Color) {
+        
+        let vc = buildDetailViewController(color: color)
+        
+        self.navigationController?
+            .pushViewController(
+                vc,
+                animated: true
+            )
+        
+    }
+    
+    private func buildDetailViewController(color: Color) -> UIViewController {
+        
+        let viewController = UIViewController()
+        viewController.title = color.name
+        viewController.view.backgroundColor = color.color
+        return viewController
         
     }
     
@@ -92,17 +127,24 @@ extension TableViewController {
             animated: true
         )
         
+        let color = self.colors[indexPath.row]
+        presentColor(color)
+        
     }
     
     override func tableView(_ tableView: UITableView,
                             contextMenuConfigurationForRowAt indexPath: IndexPath,
                             point: CGPoint) -> UIContextMenuConfiguration? {
         
-        return self.menuInteraction.configuration(
-            in: tableView,
-            indexPath: indexPath,
-            point: point
-        )
+        let color = self.colors[indexPath.row]
+        
+        return self.menuInteraction
+            .setData(color, forKey: "color")
+            .configuration(
+                in: tableView,
+                indexPath: indexPath,
+                point: point
+            )
         
     }
     

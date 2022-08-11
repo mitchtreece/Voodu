@@ -14,6 +14,8 @@ public struct ContextMenuInteraction {
     internal init(contextMenu: ContextMenu) {
         self.contextMenu = contextMenu
     }
+    
+    // MARK: Add & Remove
         
     @discardableResult
     func add(to target: ContextMenuTarget) -> ContextMenuInteraction {
@@ -31,6 +33,19 @@ public struct ContextMenuInteraction {
             .removeContextMenu(self.contextMenu)
         
     }
+    
+    // MARK: Data
+    
+    @discardableResult
+    public func setData(_ data: Any?,
+                        forKey key: String) -> Self {
+        
+        self.contextMenu.data["key"] = data
+        return self
+        
+    }
+    
+    // MARK: UIContextMenuInteraction
     
     @available(iOS 14, *)
     public func updateVisible(block: (UIMenu)->UIMenu) {

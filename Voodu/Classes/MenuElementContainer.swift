@@ -25,10 +25,10 @@ public extension MenuElementContainer {
     }
 
     @discardableResult
-    mutating func addAction(builder: ActionProvider) -> String {
+    mutating func addAction(_ provider: ActionProvider) -> String {
 
         var buildable: ActionBuildable = ActionBuilder()
-        builder(&buildable)
+        provider(&buildable)
 
         let action = (buildable as! ActionBuilder).build()
         addElement(action)
@@ -38,10 +38,10 @@ public extension MenuElementContainer {
     }
 
     @discardableResult
-    mutating func addMenu(builder: MenuProvider) -> String {
+    mutating func addMenu(_ provider: MenuProvider) -> String {
 
         var buildable: MenuBuildable = MenuBuilder()
-        builder(&buildable)
+        provider(&buildable)
 
         let menu = (buildable as! MenuBuilder).build()
         addElement(menu)
@@ -51,7 +51,7 @@ public extension MenuElementContainer {
     }
 
     @available(iOS 14, *)
-    mutating func addDeferredElements(block: @escaping (@escaping DeferredMenuElementCompletion)->()) {
+    mutating func addDeferredElements(_ block: @escaping (@escaping DeferredMenuElementCompletion)->()) {
 
         // Not using builders here because we only pass in one (required) thing.
         // Also, the way to init an `uncached` deferred element is a static function,
@@ -62,7 +62,7 @@ public extension MenuElementContainer {
     }
 
     @available(iOS 15, *)
-    mutating func addUncachedDeferredElements(block: @escaping (@escaping DeferredMenuElementCompletion)->()) {
+    mutating func addUncachedDeferredElements(_ block: @escaping (@escaping DeferredMenuElementCompletion)->()) {
 
         // Not using builders here because we only pass in one (required) thing.
         // Also, the way to init an `uncached` deferred element is a static function,
