@@ -21,18 +21,25 @@ public struct ContextMenuCollectionInteraction {
     public func setData(_ data: Any?,
                         forKey key: String) -> Self {
         
-        self.contextMenu.data[key] = data
+        self.contextMenu.data.set(
+            data,
+            forKey: key
+        )
+        
         return self
         
     }
-    
+
     // MARK: UICollectionView
     
     public func configuration(in collectionView: UICollectionView,
                               indexPath: IndexPath,
                               point: CGPoint) -> UIContextMenuConfiguration {
         
-        self.contextMenu.data["indexPath"] = indexPath
+        self.contextMenu.data.set(
+            indexPath,
+            forKey: "indexPath"
+        )
         self.contextMenu.data["cell"] = collectionView.cellForItem(at: indexPath)
 
         return self.contextMenu
@@ -62,7 +69,7 @@ public struct ContextMenuCollectionInteraction {
                                     configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
         return self.contextMenu
-            .targetedHighlightPreviewProvider?(self.contextMenu.data)
+            .targetedHighlightPreviewProvider?()
         
     }
     
@@ -70,7 +77,7 @@ public struct ContextMenuCollectionInteraction {
                                   configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
         self.contextMenu
-            .targetedDismissPreviewProvider?(self.contextMenu.data)
+            .targetedDismissPreviewProvider?()
         
     }
     
@@ -83,12 +90,7 @@ public struct ContextMenuCollectionInteraction {
         animator.preferredCommitStyle = self.contextMenu.previewCommitStyle
 
         animator.addCompletion {
-
-            committer(
-                self.contextMenu.data,
-                animator.previewViewController
-            )
-
+            committer(animator.previewViewController)
         }
         
     }

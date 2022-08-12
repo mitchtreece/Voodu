@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         if let item = connectionOptions.shortcutItem {
-            print("Launched with shortcut item: \(item)")
+            print("Launched from shortcut item: \(item)")
         }
         
     }

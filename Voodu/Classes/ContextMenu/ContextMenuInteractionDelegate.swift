@@ -48,7 +48,7 @@ internal class ContextMenuInteractionDelegate: NSObject, UIContextMenuInteractio
         guard let contextMenu = self.contextMenu else { return nil }
         
         return contextMenu
-            .targetedHighlightPreviewProvider?(contextMenu.data)
+            .targetedHighlightPreviewProvider?()
         
     }
     
@@ -59,7 +59,7 @@ internal class ContextMenuInteractionDelegate: NSObject, UIContextMenuInteractio
         guard let contextMenu = self.contextMenu else { return nil }
         
         return contextMenu
-            .targetedDismissPreviewProvider?(contextMenu.data)
+            .targetedDismissPreviewProvider?()
         
     }
     
@@ -73,12 +73,7 @@ internal class ContextMenuInteractionDelegate: NSObject, UIContextMenuInteractio
         animator.preferredCommitStyle = contextMenu.previewCommitStyle
 
         animator.addCompletion {
-
-            committer(
-                contextMenu.data,
-                animator.previewViewController
-            )
-
+            committer(animator.previewViewController)
         }
         
     }

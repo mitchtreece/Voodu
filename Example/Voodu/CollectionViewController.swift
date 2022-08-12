@@ -13,10 +13,13 @@ class CollectionViewController: UICollectionViewController {
     
     private let colors: [Color] = Array(
         repeating: Color.allCases,
-        count: 10
+        count: 30
     )
     .flatMap { $0 }
     .shuffled()
+    
+    private let itemsPerRow: Int = 6
+    private let itemSpacing: CGFloat = 8
 
     private var menuInteraction: ContextMenuCollectionInteraction!
     
@@ -35,37 +38,59 @@ class CollectionViewController: UICollectionViewController {
     
     private func setupMenu() {
         
-        self.menuInteraction = ContextMenu { menu in
-                                    
-            menu.addPreview { data -> UIViewController? in
-                
-                guard let color = data["color"] as? Color else { return nil }
-
-                let viewController = UIViewController()
-                viewController.title = color.name
-                viewController.view.backgroundColor = color.color
-                viewController.preferredContentSize = CGSize(width: 300, height: 300)
-
-                return viewController
-                
-            }
+        self.menuInteraction = ContextMenu { [weak self] data, menu in
+                           
+            guard let indexPath = data.getIndexPath() else { return }
             
             menu.addAction { action in
                 
                 action.title = "Tap the preview to present it"
                 action.image = UIImage(systemName: "hand.tap")
                 
-//                action.handler = { _ in
-//
-//                    // todo pass data to addAction(..)
-//                    // get color and present vc
-//
-//                }
+                action.handler = { _ in
+                    self?.presentItemAtIndexPath(indexPath)
+                }
                 
+            }
+            
+            menu.addPreview {
+                
+                guard let color = data["color"] as? Color else { return nil }
+   
+                let previewViewController = self?.buildDetailViewController(color: color)
+                previewViewController?.preferredContentSize = CGSize(width: 300, height: 300)
+                return previewViewController
+                
+            }
+            
+            menu.addPreviewCommitter { vc in
+                self?.presentItemAtIndexPath(indexPath)
             }
             
         }
         .collectionInteraction()
+        
+    }
+    
+    private func presentItemAtIndexPath(_ indexPath: IndexPath) {
+        
+        let color = self.colors[indexPath.row]
+        let vc = buildDetailViewController(color: color)
+        
+        self.navigationController?
+            .pushViewController(
+                vc,
+                animated: true
+            )
+        
+    }
+    
+    private func buildDetailViewController(color: Color) -> UIViewController {
+        
+        let viewController = UIViewController()
+        viewController.title = color.name
+        viewController.view.backgroundColor = color.color
+        return viewController
         
     }
     
@@ -90,7 +115,10 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let size = (collectionView.bounds.width / 3)
+        let totalSpacing = CGFloat(self.itemsPerRow - 1) * self.itemSpacing
+        let availableWidth = collectionView.bounds.width - totalSpacing
+        
+        let size = floor(availableWidth / CGFloat(self.itemsPerRow))
         
         return CGSize(
             width: size,
@@ -103,7 +131,7 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 0
+        return self.itemSpacing
         
     }
     
@@ -111,7 +139,7 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 0
+        return self.itemSpacing
         
     }
     
@@ -132,18 +160,13 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
         
     }
     
-//    override func collectionView(_ collectionView: UICollectionView,
-//                                 contextMenuConfigurationForItemAt indexPath: IndexPath,
-//                                 point: CGPoint) -> UIContextMenuConfiguration? {
-//
-//        return self.menuInteraction.configuration(
-//            in: collectionView,
-//            indexPath: indexPath,
-//            point: point
-//        )
-//
-//    }
-    
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
+        
+        presentItemAtIndexPath(indexPath)
+        
+    }
+
     override func collectionView(_ collectionView: UICollectionView,
                                  contextMenuConfigurationForItemsAt indexPaths: [IndexPath],
                                  point: CGPoint) -> UIContextMenuConfiguration? {

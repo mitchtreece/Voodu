@@ -65,7 +65,7 @@
                                             <constraint firstAttribute="height" constant="48" id="P09-hT-80x"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Press me for more options"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Press me for even more options"/>
                                     </button>
                                 </subviews>
                             </stackView>

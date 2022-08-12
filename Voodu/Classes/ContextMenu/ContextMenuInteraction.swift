@@ -40,11 +40,15 @@ public struct ContextMenuInteraction {
     public func setData(_ data: Any?,
                         forKey key: String) -> Self {
         
-        self.contextMenu.data["key"] = data
+        self.contextMenu.data.set(
+            data,
+            forKey: key
+        )
+        
         return self
         
     }
-    
+
     // MARK: UIContextMenuInteraction
     
     @available(iOS 14, *)

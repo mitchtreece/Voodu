@@ -35,27 +35,23 @@ class TableViewController: UITableViewController {
     
     private func setupMenu() {
         
-        self.menuInteraction = ContextMenu { [weak self] menu in
-            
-            menu.addPreviewCommitter { data, vc in
-                
-                guard let color = data["color"] as? Color else { return }
-                self?.presentColor(color)
-                
-            }
+        self.menuInteraction = ContextMenu { [weak self] data, menu in
+                        
+            guard let indexPath = data.getIndexPath() else { return }
             
             menu.addAction { action in
                                 
                 action.title = "Tap the preview to present it"
                 action.image = UIImage(systemName: "hand.tap")
                 
-//                action.handler = { _ in
-//
-//                    // todo pass data to addAction(..)
-//                    // get color and present vc
-//
-//                }
+                action.handler = { _ in
+                    self?.presentItemAtIndexPath(indexPath)
+                }
                 
+            }
+            
+            menu.addPreviewCommitter { vc in
+                self?.presentItemAtIndexPath(indexPath)
             }
             
         }
@@ -63,8 +59,9 @@ class TableViewController: UITableViewController {
         
     }
     
-    private func presentColor(_ color: Color) {
+    private func presentItemAtIndexPath(_ indexPath: IndexPath) {
         
+        let color = self.colors[indexPath.row]
         let vc = buildDetailViewController(color: color)
         
         self.navigationController?
@@ -127,8 +124,7 @@ extension TableViewController {
             animated: true
         )
         
-        let color = self.colors[indexPath.row]
-        presentColor(color)
+        presentItemAtIndexPath(indexPath)
         
     }
     

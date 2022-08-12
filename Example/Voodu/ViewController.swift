@@ -136,7 +136,7 @@ class ViewController: UIViewController {
             
         }
         
-        self.optionsViewInteraction = self.optionsView.addContextMenu { [weak self] menu in
+        self.optionsViewInteraction = self.optionsView.addContextMenu { [weak self] data, menu in
 
             guard let self = self else { return }
 

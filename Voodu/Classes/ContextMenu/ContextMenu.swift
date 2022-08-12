@@ -9,10 +9,10 @@ import UIKit
 
 public class ContextMenu {
     
-    public typealias Provider = (inout ContextMenuBuildable)->()
-    public typealias PreviewProvider = ([String: Any])->UIViewController?
-    public typealias PreviewCommitter = ([String: Any], UIViewController?)->()
-    public typealias TargetedPreviewProvider = ([String: Any])->UITargetedPreview?
+    public typealias Provider = (MenuData, inout ContextMenuBuildable)->()
+    public typealias PreviewProvider = ()->UIViewController?
+    public typealias PreviewCommitter = (UIViewController?)->()
+    public typealias TargetedPreviewProvider = ()->UITargetedPreview?
     
     internal private(set) var title: String?
     internal private(set) var identifier: String?
@@ -47,7 +47,7 @@ public class ContextMenu {
     
     internal private(set) weak var contextMenuInteraction: UIContextMenuInteraction?
     
-    internal var data = [String: Any]()
+    internal var data = MenuData()
     
     public init(provider: @escaping Provider) {
 
@@ -55,10 +55,36 @@ public class ContextMenu {
         self.delegate = ContextMenuInteractionDelegate(contextMenu: self)
         
         var buildable: ContextMenuBuildable = ContextMenuBuilder()
-        self.provider(&buildable)
+        
+        self.provider(
+            self.data,
+            &buildable
+        )
+        
         update(using: buildable)
 
     }
+    
+    // MARK: Data
+    
+    @discardableResult
+    public func setData(_ data: Any?,
+                        forKey key: String) -> Self {
+        
+        self.data.set(
+            data,
+            forKey: key
+        )
+        
+        return self
+        
+    }
+    
+    public func getData(_ key: String) -> Any? {
+        return self.data.get(key)
+    }
+    
+    // MARK: Interactions
     
     public func interaction() -> ContextMenuInteraction {
         return ContextMenuInteraction(contextMenu: self)
@@ -71,6 +97,8 @@ public class ContextMenu {
     public func collectionInteraction() -> ContextMenuCollectionInteraction {
         return ContextMenuCollectionInteraction(contextMenu: self)
     }
+    
+    // MARK: Private
 
     internal func setupMenuInteraction() -> UIContextMenuInteraction {
         
@@ -107,21 +135,17 @@ public class ContextMenu {
         // Ask our provider for an updated layout
         
         var buildable: ContextMenuBuildable = ContextMenuBuilder()
-        self.provider(&buildable)
+        
+        self.provider(
+            self.data,
+            &buildable
+        )
+        
         update(using: buildable)
         
         // Build configuration
         
-        var previewProvider: UIContextMenuContentPreviewProvider?
         var actionProvider: UIContextMenuActionProvider?
-
-        if let preview = self.previewProvider {
-
-            previewProvider = {
-                return preview(self.data)
-            }
-
-        }
 
         if !self.elements.isEmpty {
 
@@ -145,7 +169,7 @@ public class ContextMenu {
         
         return UIContextMenuConfiguration(
             identifier: self.configurationIdentifier,
-            previewProvider: previewProvider,
+            previewProvider: self.previewProvider,
             actionProvider: actionProvider
         )
         

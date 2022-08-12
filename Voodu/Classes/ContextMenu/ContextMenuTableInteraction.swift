@@ -21,7 +21,11 @@ public struct ContextMenuTableInteraction {
     public func setData(_ data: Any?,
                         forKey key: String) -> Self {
         
-        self.contextMenu.data[key] = data
+        self.contextMenu.data.set(
+            data,
+            forKey: key
+        )
+        
         return self
         
     }
@@ -62,7 +66,7 @@ public struct ContextMenuTableInteraction {
                                     configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
         return self.contextMenu
-            .targetedHighlightPreviewProvider?(self.contextMenu.data)
+            .targetedHighlightPreviewProvider?()
         
     }
     
@@ -70,7 +74,7 @@ public struct ContextMenuTableInteraction {
                                   configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
         self.contextMenu
-            .targetedDismissPreviewProvider?(self.contextMenu.data)
+            .targetedDismissPreviewProvider?()
         
     }
     
@@ -83,12 +87,7 @@ public struct ContextMenuTableInteraction {
         animator.preferredCommitStyle = self.contextMenu.previewCommitStyle
 
         animator.addCompletion {
-
-            committer(
-                self.contextMenu.data,
-                animator.previewViewController
-            )
-
+            committer(animator.previewViewController)
         }
         
     }
