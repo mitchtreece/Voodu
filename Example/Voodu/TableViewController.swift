@@ -42,19 +42,19 @@ class TableViewController: UITableViewController {
             guard let self = self else { return }
             guard let indexPath = data.indexPath() else { return }
             
-//            menu.addAction { action in
-//
-//                let isAdded = self.addedItemMap[indexPath] ?? false
-//
-//                action.title = isAdded ? "Remove" : "Add"
-//                action.image = UIImage(systemName: isAdded ? "minus.circle" : "plus.circle")
-//                action.attributes = isAdded ? .destructive : []
-//
-//                action.handler = { _ in
-//                    self.addOrRemoveAt(indexPath: indexPath)
-//                }
-//
-//            }
+            menu.addAction { action in
+
+                let isAdded = self.addedItemMap[indexPath] ?? false
+
+                action.title = isAdded ? "Remove" : "Add"
+                action.image = UIImage(systemName: isAdded ? "minus.circle" : "plus.circle")
+                action.attributes = isAdded ? .destructive : []
+
+                action.handler = { _ in
+                    self.addOrRemoveAt(indexPath: indexPath)
+                }
+
+            }
             
             menu.addPreviewCommitter { vc in
                 self.presentItemAtIndexPath(indexPath)
