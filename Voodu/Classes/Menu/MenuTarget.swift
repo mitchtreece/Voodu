@@ -16,25 +16,22 @@ public protocol MenuTarget: AnyObject {
 
 public extension MenuTarget {
     
-    func addMenu(_ menu: Menu) -> MenuInteraction {
-
+    func addMenu(_ menu: Menu) {
         menu.setup(target: self)
-        
-        return menu
-            .interaction()
-        
     }
 
-    func addMenu(provider: @escaping Menu.Provider) -> MenuInteraction {
+    func addMenu(provider: @escaping (inout MenuBuildable)->()) -> Menu {
 
         let menu = Menu(provider: provider)
-        return addMenu(menu)
+        addMenu(menu)
+        
+        return menu
         
     }
-
-    func removeMenu(for interaction: MenuInteraction) {
+    
+    func removeMenu(_ menu: Menu) {
         
-        guard interaction.menu == self.targetMenu else { return }
+        guard menu == self.targetMenu else { return }
         
         self.targetMenu = nil
         self.menu = nil

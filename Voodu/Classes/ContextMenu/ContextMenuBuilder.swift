@@ -13,11 +13,11 @@ public protocol ContextMenuBuildable: MenuElementContainer {
     var identifier: String? { get set }
     var configurationIdentifier: NSCopying? { get set }
     var options: UIMenu.Options { get set }
-    var previewProvider: ContextMenu.PreviewProvider? { get set }
-    var previewCommitter: ContextMenu.PreviewCommitter? { get set }
+    var previewProvider: (()->UIViewController?)? { get set }
+    var previewCommitter: ((UIViewController?)->())? { get set }
     var previewCommitStyle: UIContextMenuInteractionCommitStyle { get set }
-    var targetedHighlightPreviewProvider: ContextMenu.TargetedPreviewProvider? { get set }
-    var targetedDismissPreviewProvider: ContextMenu.TargetedPreviewProvider? { get set }
+    var targetedHighlightPreviewProvider: (()->UITargetedPreview?)? { get set }
+    var targetedDismissPreviewProvider: (()->UITargetedPreview?)? { get set }
     var includeSuggestedElements: Bool { get set }
     var willPresent: (()->())? { get set }
     var willDismiss: (()->())? { get set }
@@ -29,19 +29,19 @@ public protocol ContextMenuBuildable: MenuElementContainer {
 
 public extension ContextMenuBuildable {
     
-    mutating func addPreview(_ provider: @escaping ContextMenu.PreviewProvider) {
+    mutating func addPreview(_ provider: @escaping ()->UIViewController?) {
         self.previewProvider = provider
     }
     
-    mutating func addPreviewCommitter(_ committer: @escaping ContextMenu.PreviewCommitter) {
+    mutating func addPreviewCommitter(_ committer: @escaping (UIViewController?)->()) {
         self.previewCommitter = committer
     }
     
-    mutating func addHighlightingPreview(_ provider: @escaping ContextMenu.TargetedPreviewProvider) {
+    mutating func addHighlightPreview(_ provider: @escaping ()->UITargetedPreview?) {
         self.targetedHighlightPreviewProvider = provider
     }
     
-    mutating func addDismissingPreview(_ provider: @escaping ContextMenu.TargetedPreviewProvider) {
+    mutating func addDismissPreview(_ provider: @escaping ()->UITargetedPreview?) {
         self.targetedDismissPreviewProvider = provider
     }
     
@@ -62,11 +62,11 @@ internal struct ContextMenuBuilder: ContextMenuBuildable {
     var configurationIdentifier: NSCopying?
     var options: UIMenu.Options = []
     var elements: [UIMenuElement] = []
-    var previewProvider: ContextMenu.PreviewProvider?
-    var previewCommitter: ContextMenu.PreviewCommitter?
+    var previewProvider: (()->UIViewController?)?
+    var previewCommitter: ((UIViewController?)->())?
     var previewCommitStyle: UIContextMenuInteractionCommitStyle = .pop
-    var targetedHighlightPreviewProvider: ContextMenu.TargetedPreviewProvider?
-    var targetedDismissPreviewProvider: ContextMenu.TargetedPreviewProvider?
+    var targetedHighlightPreviewProvider: (()->UITargetedPreview?)?
+    var targetedDismissPreviewProvider: (()->UITargetedPreview?)?
     var includeSuggestedElements: Bool = false
     var willPresent: (()->())?
     var willDismiss: (()->())?

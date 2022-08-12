@@ -9,10 +9,10 @@ import UIKit
 
 public extension UIApplication {
     
-    func addShortcutMenu(builder: ShortcutMenuProvider) {
+    func addShortcutMenu(provider: ShortcutMenuProvider) {
         
         var buildable: ShortcutMenuBuildable = ShortcutMenuBuilder()
-        builder(&buildable)
+        provider(&buildable)
         
         let items = (buildable as! ShortcutMenuBuilder).build()
         self.shortcutItems = items

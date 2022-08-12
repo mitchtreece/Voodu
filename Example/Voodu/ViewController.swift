@@ -14,11 +14,11 @@ class ViewController: UIViewController {
     @IBOutlet private weak var optionsButton: UIButton!
     @IBOutlet private weak var optionsView: UIView!
 
-    private var optionsViewInteraction: ContextMenuInteraction!
-    private var optionsItemInteraction: MenuInteraction!
-    private var optionsButtonInteraction: MenuInteraction!
-    private var listsButtonInteraction: MenuInteraction!
-    
+    private var optionsViewMenu: ContextMenu!
+    private var optionsItemMenu: Menu!
+    private var optionsButtonMenu: Menu!
+    private var listsButtonMenu: Menu!
+        
     private var isShared: Bool = false
     private var isFavorite: Bool = false
     
@@ -37,10 +37,10 @@ class ViewController: UIViewController {
     }
 
     private func setupMenus() {
-
+        
         if #available(iOS 14, *) {
             
-            self.optionsItemInteraction = self.optionsBarButtonItem.addMenu { [weak self] menu in
+            self.optionsItemMenu = self.optionsBarButtonItem.addMenu { [weak self] menu in
 
                 guard let self = self else { return }
                 
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
 
             self.optionsButton.showsMenuAsPrimaryAction = true
 
-            self.optionsButtonInteraction = self.optionsButton.addMenu { [weak self] menu in
+            self.optionsButtonMenu = self.optionsButton.addMenu { [weak self] menu in
 
                 guard let self = self else { return }
 
@@ -136,7 +136,7 @@ class ViewController: UIViewController {
             
         }
         
-        self.optionsViewInteraction = self.optionsView.addContextMenu { [weak self] data, menu in
+        self.optionsViewMenu = self.optionsView.addContextMenu { [weak self] data, menu in
 
             guard let self = self else { return }
 

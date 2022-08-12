@@ -58,11 +58,11 @@ internal struct ActionBuilder: ActionBuildable {
 
 public extension UIAction {
     
-    convenience init(builder: ActionProvider) {
+    convenience init(provider: ActionProvider) {
         
         var buildable: ActionBuildable = ActionBuilder()
         
-        builder(&buildable)
+        provider(&buildable)
 
         self.init(buildable: buildable)
         

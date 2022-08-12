@@ -62,16 +62,16 @@ public struct ContextMenuTableInteraction {
         
     }
     
-    public func highlightingPreview(in tableView: UITableView,
-                                    configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+    public func highlightPreview(in tableView: UITableView,
+                                 configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
         return self.contextMenu
             .targetedHighlightPreviewProvider?()
         
     }
     
-    public func dismissingPreview(in tableView: UITableView,
-                                  configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+    public func dismissPreview(in tableView: UITableView,
+                               configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
         self.contextMenu
             .targetedDismissPreviewProvider?()

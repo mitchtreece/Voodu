@@ -9,7 +9,7 @@ import UIKit
 
 public struct MenuInteraction {
     
-    internal private(set) var menu: Menu!
+    internal weak var menu: Menu?
     
     internal init(menu: Menu) {
         self.menu = menu
@@ -17,20 +17,18 @@ public struct MenuInteraction {
     
     @available(iOS 14, *)
     func updateVisible(block: (UIMenu)->UIMenu) {
-        
-        guard let target = self.menu.target else { return }
-        
-        target
+                
+        self.menu?
+            .target?
             .contextMenuInteraction?
             .updateVisibleMenu(block)
         
     }
     
     func dismiss() {
-        
-        guard let target = self.menu.target else { return }
-        
-        target
+                
+        self.menu?
+            .target?
             .contextMenuInteraction?
             .dismissMenu()
         

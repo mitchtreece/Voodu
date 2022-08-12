@@ -17,8 +17,10 @@ class TableViewController: UITableViewController {
     )
     .flatMap { $0 }
     .shuffled()
+    
+    private var addedItemMap = [IndexPath: Bool]()
 
-    private var menuInteraction: ContextMenuTableInteraction!
+    private var tableMenu: ContextMenu!
     
     override func viewDidLoad() {
         
@@ -35,27 +37,42 @@ class TableViewController: UITableViewController {
     
     private func setupMenu() {
         
-        self.menuInteraction = ContextMenu { [weak self] data, menu in
-                        
-            guard let indexPath = data.getIndexPath() else { return }
+        self.tableMenu = ContextMenu { [weak self] data, menu in
+                  
+            guard let self = self else { return }
+            guard let indexPath = data.indexPath() else { return }
             
-            menu.addAction { action in
-                                
-                action.title = "Tap the preview to present it"
-                action.image = UIImage(systemName: "hand.tap")
-                
-                action.handler = { _ in
-                    self?.presentItemAtIndexPath(indexPath)
-                }
-                
-            }
+//            menu.addAction { action in
+//
+//                let isAdded = self.addedItemMap[indexPath] ?? false
+//
+//                action.title = isAdded ? "Remove" : "Add"
+//                action.image = UIImage(systemName: isAdded ? "minus.circle" : "plus.circle")
+//                action.attributes = isAdded ? .destructive : []
+//
+//                action.handler = { _ in
+//                    self.addOrRemoveAt(indexPath: indexPath)
+//                }
+//
+//            }
             
             menu.addPreviewCommitter { vc in
-                self?.presentItemAtIndexPath(indexPath)
+                self.presentItemAtIndexPath(indexPath)
             }
             
         }
-        .tableInteraction()
+        
+    }
+    
+    private func addOrRemoveAt(indexPath: IndexPath) {
+        
+        let isAdded = self.addedItemMap[indexPath] ?? false
+        self.addedItemMap[indexPath] = !isAdded
+        
+        self.tableView.reloadRows(
+            at: [indexPath],
+            with: .automatic
+        )
         
     }
     
@@ -102,13 +119,15 @@ extension TableViewController {
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let color = self.colors[indexPath.row]
-                
+        let isAdded = self.addedItemMap[indexPath] ?? false
+        
         let cell = tableView
             .dequeueReusableCell(
                 withIdentifier: "cell",
                 for: indexPath
             )
         
+        cell.backgroundColor = isAdded ? .systemGray4 : .systemBackground
         cell.textLabel?.text = color.name
         cell.accessoryType = .disclosureIndicator
         
@@ -134,7 +153,8 @@ extension TableViewController {
         
         let color = self.colors[indexPath.row]
         
-        return self.menuInteraction
+        return self.tableMenu
+            .asTableInteraction()
             .setData(color, forKey: "color")
             .configuration(
                 in: tableView,
@@ -148,11 +168,13 @@ extension TableViewController {
                             willDisplayContextMenu configuration: UIContextMenuConfiguration,
                             animator: UIContextMenuInteractionAnimating?) {
         
-        self.menuInteraction.willDisplay(
-            in: tableView,
-            configuration: configuration,
-            animator: animator
-        )
+        self.tableMenu
+            .asTableInteraction()
+            .willDisplay(
+                in: tableView,
+                configuration: configuration,
+                animator: animator
+            )
         
     }
     
@@ -160,31 +182,37 @@ extension TableViewController {
                             willEndContextMenuInteraction configuration: UIContextMenuConfiguration,
                             animator: UIContextMenuInteractionAnimating?) {
         
-        self.menuInteraction.willEnd(
-            in: tableView,
-            configuration: configuration,
-            animator: animator
-        )
+        self.tableMenu
+            .asTableInteraction()
+            .willEnd(
+                in: tableView,
+                configuration: configuration,
+                animator: animator
+            )
         
     }
     
     override func tableView(_ tableView: UITableView,
                             previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
-        return self.menuInteraction.highlightingPreview(
-            in: tableView,
-            configuration: configuration
-        )
+        return self.tableMenu
+            .asTableInteraction()
+            .highlightPreview(
+                in: tableView,
+                configuration: configuration
+            )
         
     }
     
     override func tableView(_ tableView: UITableView,
                             previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
-        return self.menuInteraction.dismissingPreview(
-            in: tableView,
-            configuration: configuration
-        )
+        return self.tableMenu
+            .asTableInteraction()
+            .dismissPreview(
+                in: tableView,
+                configuration: configuration
+            )
         
     }
     
@@ -192,11 +220,13 @@ extension TableViewController {
                             willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration,
                             animator: UIContextMenuInteractionCommitAnimating) {
         
-        self.menuInteraction.willPerformPreviewAction(
-            in: tableView,
-            configuration: configuration,
-            animator: animator
-        )
+        self.tableMenu
+            .asTableInteraction()
+            .willPerformPreviewAction(
+                in: tableView,
+                configuration: configuration,
+                animator: animator
+            )
         
     }
     

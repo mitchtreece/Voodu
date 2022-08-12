@@ -20,24 +20,23 @@ extension UIView: ContextMenuTarget {}
 
 public extension ContextMenuTarget {
     
-    func addContextMenu(_ contextMenu: ContextMenu) -> ContextMenuInteraction {
+    func addContextMenu(_ contextMenu: ContextMenu) {
                 
         if let existingInteraction = self.interactions.first(where: { $0 is UIContextMenuInteraction }) {
             removeInteraction(existingInteraction)
         }
                                         
-        let interaction = contextMenu.setupMenuInteraction()
+        let interaction = contextMenu.setupContextMenuInteraction()
         addInteraction(interaction)
-        
-        return contextMenu
-            .interaction()
         
     }
     
-    func addContextMenu(provider: @escaping ContextMenu.Provider) -> ContextMenuInteraction {
+    func addContextMenu(provider: @escaping ContextMenu.Provider) -> ContextMenu {
         
         let contextMenu = ContextMenu(provider: provider)
-        return addContextMenu(contextMenu)
+        addContextMenu(contextMenu)
+        
+        return contextMenu
         
     }
     
@@ -49,10 +48,6 @@ public extension ContextMenuTarget {
         
         removeInteraction(interaction)
         
-    }
-    
-    func removeContextMenuInteraction(_ interaction: ContextMenuInteraction) {
-        removeContextMenu(interaction.contextMenu)
     }
 
 }

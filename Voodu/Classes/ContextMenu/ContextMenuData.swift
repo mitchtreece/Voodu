@@ -1,5 +1,5 @@
 //
-//  MenuData.swift
+//  ContextMenuData.swift
 //  Voodu
 //
 //  Created by Mitch Treece on 8/11/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MenuData {
+public struct ContextMenuData {
     
     public subscript(key: String) -> Any? {
         get {
@@ -33,15 +33,15 @@ public struct MenuData {
     
     // MARK: Helpers
     
-    public func getIndexPath() -> IndexPath? {
+    public func indexPath() -> IndexPath? {
         return get("indexPath") as? IndexPath
     }
     
-    public func getTableCell() -> UITableViewCell? {
+    public func tableCell() -> UITableViewCell? {
         return get("cell") as? UITableViewCell
     }
     
-    public func getCollectionCell() -> UICollectionViewCell? {
+    public func collectionCell() -> UICollectionViewCell? {
         return get("cell") as? UICollectionViewCell
     }
     

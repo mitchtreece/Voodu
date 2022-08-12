@@ -7,19 +7,16 @@
 
 import UIKit
 
-//@available(iOS 14, *)
 public class Menu: NSObject {
     
     public typealias Provider = (inout MenuBuildable)->()
- 
+     
     internal private(set) var title: String = ""
     internal private(set) var image: UIImage?
     internal private(set) var identifier: String?
     internal private(set) var options: UIMenu.Options = []
     internal private(set) var elements: [UIMenuElement] = []
-    internal private(set) var willPresent: (()->())?
-    internal private(set) var willDismiss: (()->())?
-    
+
     @available(iOS 15, *)
     internal private(set) var subtitle: String? {
         get {
@@ -43,7 +40,7 @@ public class Menu: NSObject {
     private var _subtitle: String?
     private var _elementSize: Any?
     
-    private var provider: Provider
+    private let provider: Provider
     
     internal private(set) weak var target: MenuTarget?
     
@@ -81,8 +78,6 @@ public class Menu: NSObject {
         self.identifier = buildable.identifier
         self.options = buildable.options
         self.elements = buildable.elements
-        self.willPresent = buildable.willPresent
-        self.willDismiss = buildable.willDismiss
 
         if #available(iOS 15, *) {
             self.subtitle = buildable.subtitle
@@ -95,9 +90,7 @@ public class Menu: NSObject {
     }
     
     internal func menu() -> UIMenu {
-        
-        print("👉🏼 Menu.menu()")
-        
+                
         var buildable: MenuBuildable = MenuBuilder()
         self.provider(&buildable)
         update(using: buildable)

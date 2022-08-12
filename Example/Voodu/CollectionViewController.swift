@@ -18,10 +18,12 @@ class CollectionViewController: UICollectionViewController {
     .flatMap { $0 }
     .shuffled()
     
-    private let itemsPerRow: Int = 6
+    private let itemsPerRow: Int = 5
     private let itemSpacing: CGFloat = 8
+    private let itemCornerRadius: CGFloat = 8
+    private var addedItemMap = [IndexPath: Bool]()
 
-    private var menuInteraction: ContextMenuCollectionInteraction!
+    private var collectionMenu: ContextMenu!
     
     override func viewDidLoad() {
         
@@ -38,17 +40,21 @@ class CollectionViewController: UICollectionViewController {
     
     private func setupMenu() {
         
-        self.menuInteraction = ContextMenu { [weak self] data, menu in
+        self.collectionMenu = ContextMenu { [weak self] data, menu in
                            
-            guard let indexPath = data.getIndexPath() else { return }
-            
+            guard let self = self else { return }
+            guard let indexPath = data.indexPath() else { return }
+                        
             menu.addAction { action in
                 
-                action.title = "Tap the preview to present it"
-                action.image = UIImage(systemName: "hand.tap")
+                let isAdded = self.addedItemMap[indexPath] ?? false
+                                
+                action.title = isAdded ? "Remove" : "Add"
+                action.image = UIImage(systemName: isAdded ? "minus.circle" : "plus.circle")
+                action.attributes = isAdded ? .destructive : []
                 
                 action.handler = { _ in
-                    self?.presentItemAtIndexPath(indexPath)
+                    self.addOrRemoveAt(indexPath: indexPath)
                 }
                 
             }
@@ -57,18 +63,45 @@ class CollectionViewController: UICollectionViewController {
                 
                 guard let color = data["color"] as? Color else { return nil }
    
-                let previewViewController = self?.buildDetailViewController(color: color)
-                previewViewController?.preferredContentSize = CGSize(width: 300, height: 300)
+                let previewViewController = self.buildDetailViewController(color: color)
+                previewViewController.preferredContentSize = CGSize(width: 300, height: 300)
                 return previewViewController
                 
             }
             
+            menu.addHighlightPreview {
+
+                guard let cell = data.collectionCell() else { return nil }
+
+                let parameters = UIPreviewParameters()
+                
+                parameters.visiblePath = UIBezierPath(
+                    roundedRect: cell.contentView.frame,
+                    cornerRadius: self.itemCornerRadius
+                )
+
+                return UITargetedPreview(
+                    view: cell,
+                    parameters: parameters
+                )
+
+            }
+            
             menu.addPreviewCommitter { vc in
-                self?.presentItemAtIndexPath(indexPath)
+                self.presentItemAtIndexPath(indexPath)
             }
             
         }
-        .collectionInteraction()
+        
+    }
+    
+    private func addOrRemoveAt(indexPath: IndexPath) {
+        
+        let isAdded = self.addedItemMap[indexPath] ?? false
+        self.addedItemMap[indexPath] = !isAdded
+        
+        self.collectionView!
+            .reloadItems(at: [indexPath])
         
     }
     
@@ -147,6 +180,7 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
      
         let color = self.colors[indexPath.item]
+        let isAdded = self.addedItemMap[indexPath] ?? false
         
         let cell = collectionView
             .dequeueReusableCell(
@@ -155,7 +189,10 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
             )
         
         cell.contentView.backgroundColor = color.color
-        
+        cell.contentView.layer.cornerRadius = self.itemCornerRadius
+        cell.contentView.layer.borderColor = UIColor.black.cgColor
+        cell.contentView.layer.borderWidth = isAdded ? 12 : 0
+                
         return cell
         
     }
@@ -175,7 +212,8 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
         
         let color = self.colors[indexPath.row]
         
-        return self.menuInteraction
+        return self.collectionMenu
+            .asCollectionInteraction()
             .setData(color, forKey: "color")
             .configuration(
                 in: collectionView,
@@ -189,11 +227,13 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
                                  willDisplayContextMenu configuration: UIContextMenuConfiguration,
                                  animator: UIContextMenuInteractionAnimating?) {
         
-        self.menuInteraction.willDisplay(
-            in: collectionView,
-            configuration: configuration,
-            animator: animator
-        )
+        self.collectionMenu
+            .asCollectionInteraction()
+            .willDisplay(
+                in: collectionView,
+                configuration: configuration,
+                animator: animator
+            )
         
     }
     
@@ -201,11 +241,13 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
                                  willEndContextMenuInteraction configuration: UIContextMenuConfiguration,
                                  animator: UIContextMenuInteractionAnimating?) {
         
-        self.menuInteraction.willEnd(
-            in: collectionView,
-            configuration: configuration,
-            animator: animator
-        )
+        self.collectionMenu
+            .asCollectionInteraction()
+            .willEnd(
+                in: collectionView,
+                configuration: configuration,
+                animator: animator
+            )
         
     }
     
@@ -213,10 +255,12 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
                                  contextMenuConfiguration configuration: UIContextMenuConfiguration,
                                  highlightPreviewForItemAt indexPath: IndexPath) -> UITargetedPreview? {
         
-        return self.menuInteraction.highlightingPreview(
-            in: collectionView,
-            configuration: configuration
-        )
+        return self.collectionMenu
+            .asCollectionInteraction()
+            .highlightPreview(
+                in: collectionView,
+                configuration: configuration
+            )
         
     }
     
@@ -224,10 +268,12 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
                                  contextMenuConfiguration configuration: UIContextMenuConfiguration,
                                  dismissalPreviewForItemAt indexPath: IndexPath) -> UITargetedPreview? {
         
-        self.menuInteraction.dismissingPreview(
-            in: collectionView,
-            configuration: configuration
-        )
+        self.collectionMenu
+            .asCollectionInteraction()
+            .dismissPreview(
+                in: collectionView,
+                configuration: configuration
+            )
         
     }
     
@@ -235,11 +281,13 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
                                  willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration,
                                  animator: UIContextMenuInteractionCommitAnimating) {
         
-        self.menuInteraction.willPerformPreviewAction(
-            in: collectionView,
-            configuration: configuration,
-            animator: animator
-        )
+        self.collectionMenu
+            .asCollectionInteraction()
+            .willPerformPreviewAction(
+                in: collectionView,
+                configuration: configuration,
+                animator: animator
+            )
         
     }
     

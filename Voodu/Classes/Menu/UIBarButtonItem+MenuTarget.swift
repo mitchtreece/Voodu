@@ -83,8 +83,6 @@ extension UIBarButtonItem: MenuTarget {
 
         let _: () = {
             
-            // UIBarButtonItem.menu
-
             let oMenuSelector = #selector(getter: self.menu)
             let oMenuMethod = class_getInstanceMethod(self, oMenuSelector)
 
@@ -100,23 +98,6 @@ extension UIBarButtonItem: MenuTarget {
                 )
 
             }
-            
-            // UIControl.isHighlighted
-            
-//            let oHighlightSelector = NSSelectorFromString("setHighlighted:")
-//            let imp = class_getMethodImplementation(UIControl.self, oHighlightSelector)
-//            let oHighlightMethod = class_getInstanceMethod(UIControl.self, oHighlightSelector)
-//
-//            let sHighlightSelector = #selector(swizzled_controlSetHighlighted)
-//            let sHighlightMethod = class_getInstanceMethod(self, sHighlightSelector)
-//
-//            guard let oHighlightMethod = oHighlightMethod,
-//                  let sHighlightMethod = sHighlightMethod else { return }
-//
-//            method_exchangeImplementations(
-//                oHighlightMethod,
-//                sHighlightMethod
-//            )
 
         }()
 
@@ -135,34 +116,26 @@ extension UIBarButtonItem: MenuTarget {
         if let control = self.control, !self.didAddMenuAction {
 
             let action = UIAction(identifier: .init("preheat_menu_action")) { [weak self] _ in
-                
+
                 guard let self = self, control.isContextMenuInteractionEnabled else { return }
-                
-                print("👉🏼 UIBarButtonItem.willPresentMenu")
-                
+
                 self.menu = itemMenu.menu()
-                
-                itemMenu.willPresent?()
-                                
+
+                // itemMenu.willPresent?()
+
             }
-            
+
             control.addAction(
                 action,
                 for: .touchDown
             )
-            
+
             self.didAddMenuAction = true
-            
+
         }
                 
         return itemMenu.menu()
                 
-    }
-    
-    @objc private func swizzled_controlSetHighlighted(_ highlighted: Bool) {
-                
-        print("control highlight - do something here")
-        
     }
     
 }

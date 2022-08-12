@@ -65,16 +65,16 @@ public struct ContextMenuCollectionInteraction {
         
     }
     
-    public func highlightingPreview(in collectionView: UICollectionView,
-                                    configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+    public func highlightPreview(in collectionView: UICollectionView,
+                                 configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
         return self.contextMenu
             .targetedHighlightPreviewProvider?()
         
     }
     
-    public func dismissingPreview(in collectionView: UICollectionView,
-                                  configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+    public func dismissPreview(in collectionView: UICollectionView,
+                               configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
         self.contextMenu
             .targetedDismissPreviewProvider?()

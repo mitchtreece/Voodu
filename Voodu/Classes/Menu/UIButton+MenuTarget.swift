@@ -78,36 +78,36 @@ extension UIButton: MenuTarget {
         
     }
     
-    // MARK: UIContextMenuInteractionDelegate
-    
-    open override func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
-                                              willDisplayMenuFor configuration: UIContextMenuConfiguration,
-                                              animator: UIContextMenuInteractionAnimating?) {
-                
-        self.buttonMenu?
-            .willPresent?()
-        
-        super.contextMenuInteraction(
-            interaction,
-            willDisplayMenuFor: configuration,
-            animator: animator
-        )
-        
-    }
-
-    open override func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
-                                              willEndFor configuration: UIContextMenuConfiguration,
-                                              animator: UIContextMenuInteractionAnimating?) {
-
-        self.buttonMenu?
-            .willDismiss?()
-        
-        super.contextMenuInteraction(
-            interaction,
-            willEndFor: configuration,
-            animator: animator
-        )
-
-    }
+//    // MARK: UIContextMenuInteractionDelegate
+//
+//    open override func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
+//                                              willDisplayMenuFor configuration: UIContextMenuConfiguration,
+//                                              animator: UIContextMenuInteractionAnimating?) {
+//
+//        self.buttonMenu?
+//            .willPresent?()
+//
+//        super.contextMenuInteraction(
+//            interaction,
+//            willDisplayMenuFor: configuration,
+//            animator: animator
+//        )
+//
+//    }
+//
+//    open override func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
+//                                              willEndFor configuration: UIContextMenuConfiguration,
+//                                              animator: UIContextMenuInteractionAnimating?) {
+//
+//        self.buttonMenu?
+//            .willDismiss?()
+//
+//        super.contextMenuInteraction(
+//            interaction,
+//            willEndFor: configuration,
+//            animator: animator
+//        )
+//
+//    }
     
 }

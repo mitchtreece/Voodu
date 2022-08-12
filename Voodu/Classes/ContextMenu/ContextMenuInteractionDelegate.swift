@@ -14,7 +14,7 @@ internal class ContextMenuInteractionDelegate: NSObject, UIContextMenuInteractio
     init(contextMenu: ContextMenu) {
         self.contextMenu = contextMenu
     }
-    
+        
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
                                 configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
         
@@ -41,9 +41,9 @@ internal class ContextMenuInteractionDelegate: NSObject, UIContextMenuInteractio
         
     }
     
+    @available(iOS, deprecated: 16)
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
-                                configuration: UIContextMenuConfiguration,
-                                highlightPreviewForItemWithIdentifier identifier: NSCopying) -> UITargetedPreview? {
+                                previewForHighlightingMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
         guard let contextMenu = self.contextMenu else { return nil }
         
@@ -52,9 +52,9 @@ internal class ContextMenuInteractionDelegate: NSObject, UIContextMenuInteractio
         
     }
     
+    @available(iOS, deprecated: 16)
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
-                                configuration: UIContextMenuConfiguration,
-                                dismissalPreviewForItemWithIdentifier identifier: NSCopying) -> UITargetedPreview? {
+                                previewForDismissingMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         
         guard let contextMenu = self.contextMenu else { return nil }
         
@@ -63,6 +63,30 @@ internal class ContextMenuInteractionDelegate: NSObject, UIContextMenuInteractio
         
     }
     
+    @available(iOS 16, *)
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
+                                configuration: UIContextMenuConfiguration,
+                                highlightPreviewForItemWithIdentifier identifier: NSCopying) -> UITargetedPreview? {
+
+        guard let contextMenu = self.contextMenu else { return nil }
+
+        return contextMenu
+            .targetedHighlightPreviewProvider?()
+
+    }
+
+    @available(iOS 16, *)
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
+                                configuration: UIContextMenuConfiguration,
+                                dismissalPreviewForItemWithIdentifier identifier: NSCopying) -> UITargetedPreview? {
+
+        guard let contextMenu = self.contextMenu else { return nil }
+
+        return contextMenu
+            .targetedDismissPreviewProvider?()
+
+    }
+        
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
                                 willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration,
                                 animator: UIContextMenuInteractionCommitAnimating) {

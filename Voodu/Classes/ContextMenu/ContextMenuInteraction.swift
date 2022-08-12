@@ -9,28 +9,22 @@ import UIKit
 
 public struct ContextMenuInteraction {
     
-    internal let contextMenu: ContextMenu
+    internal weak var contextMenu: ContextMenu?
     
     internal init(contextMenu: ContextMenu) {
         self.contextMenu = contextMenu
     }
     
-    // MARK: Add & Remove
-        
-    @discardableResult
-    func add(to target: ContextMenuTarget) -> ContextMenuInteraction {
-                
-        return target
-            .addContextMenu(self.contextMenu)
-                
-    }
-    
+    // MARK: Remove
+
     func removeFromTarget() {
         
-        self.contextMenu
+        guard let contextMenu = self.contextMenu else { return }
+        
+        contextMenu
             .contextMenuInteraction?
             .view?
-            .removeContextMenu(self.contextMenu)
+            .removeContextMenu(contextMenu)
         
     }
     
@@ -40,7 +34,7 @@ public struct ContextMenuInteraction {
     public func setData(_ data: Any?,
                         forKey key: String) -> Self {
         
-        self.contextMenu.data.set(
+        self.contextMenu?.data.set(
             data,
             forKey: key
         )
@@ -54,7 +48,7 @@ public struct ContextMenuInteraction {
     @available(iOS 14, *)
     public func updateVisible(block: (UIMenu)->UIMenu) {
                 
-        self.contextMenu
+        self.contextMenu?
             .contextMenuInteraction?
             .updateVisibleMenu(block)
         
@@ -62,7 +56,7 @@ public struct ContextMenuInteraction {
     
     public func dismiss() {
                 
-        self.contextMenu
+        self.contextMenu?
             .contextMenuInteraction?
             .dismissMenu()
         

@@ -38,12 +38,12 @@ internal struct ShortcutMenuItemBuilder: ShortcutMenuItemBuildable {
 }
 
 public extension UIApplicationShortcutItem {
-
-    convenience init(builder: ShortcutMenuItemProvider) {
+    
+    convenience init(provider: ShortcutMenuItemProvider) {
                 
         var buildable: ShortcutMenuItemBuildable = ShortcutMenuItemBuilder()
         
-        builder(&buildable)
+        provider(&buildable)
         
         self.init(buildable: buildable)
         

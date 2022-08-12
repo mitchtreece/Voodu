@@ -9,21 +9,18 @@ import UIKit
 
 public class ContextMenu {
     
-    public typealias Provider = (MenuData, inout ContextMenuBuildable)->()
-    public typealias PreviewProvider = ()->UIViewController?
-    public typealias PreviewCommitter = (UIViewController?)->()
-    public typealias TargetedPreviewProvider = ()->UITargetedPreview?
-    
+    public typealias Provider = (ContextMenuData, inout ContextMenuBuildable)->()
+        
     internal private(set) var title: String?
     internal private(set) var identifier: String?
     internal private(set) var configurationIdentifier: NSCopying?
     internal private(set) var options: UIMenu.Options = []
     internal private(set) var elements: [UIMenuElement] = []
-    internal private(set) var previewProvider: ContextMenu.PreviewProvider?
-    internal private(set) var previewCommitter: ContextMenu.PreviewCommitter?
+    internal private(set) var previewProvider: (()->UIViewController?)?
+    internal private(set) var previewCommitter: ((UIViewController?)->())?
     internal private(set) var previewCommitStyle: UIContextMenuInteractionCommitStyle = .pop
-    internal private(set) var targetedHighlightPreviewProvider: ContextMenu.TargetedPreviewProvider?
-    internal private(set) var targetedDismissPreviewProvider: ContextMenu.TargetedPreviewProvider?
+    internal private(set) var targetedHighlightPreviewProvider: (()->UITargetedPreview?)?
+    internal private(set) var targetedDismissPreviewProvider: (()->UITargetedPreview?)?
     internal private(set) var includeSuggestedElements: Bool = false
     internal private(set) var willPresent: (()->())?
     internal private(set) var willDismiss: (()->())?
@@ -39,15 +36,15 @@ public class ContextMenu {
     }
     
     private var _elementSize: Any?
-    
-    //////
-    
+        
     private let provider: Provider
     private var delegate: ContextMenuInteractionDelegate!
     
     internal private(set) weak var contextMenuInteraction: UIContextMenuInteraction?
     
-    internal var data = MenuData()
+    internal var data = ContextMenuData()
+    
+    // MARK: Initializers
     
     public init(provider: @escaping Provider) {
 
@@ -86,21 +83,21 @@ public class ContextMenu {
     
     // MARK: Interactions
     
-    public func interaction() -> ContextMenuInteraction {
+    public func asInteraction() -> ContextMenuInteraction {
         return ContextMenuInteraction(contextMenu: self)
     }
     
-    public func tableInteraction() -> ContextMenuTableInteraction {
+    public func asTableInteraction() -> ContextMenuTableInteraction {
         return ContextMenuTableInteraction(contextMenu: self)
     }
     
-    public func collectionInteraction() -> ContextMenuCollectionInteraction {
+    public func asCollectionInteraction() -> ContextMenuCollectionInteraction {
         return ContextMenuCollectionInteraction(contextMenu: self)
     }
     
     // MARK: Private
 
-    internal func setupMenuInteraction() -> UIContextMenuInteraction {
+    internal func setupContextMenuInteraction() -> UIContextMenuInteraction {
         
         let interaction = UIContextMenuInteraction(delegate: self.delegate)
         self.contextMenuInteraction = interaction

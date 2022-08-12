@@ -14,9 +14,7 @@ public protocol MenuBuildable: MenuElementContainer {
     var title: String { get set }
     var image: UIImage? { get set }
     var identifier: String? { get set }
-    var options: UIMenu.Options { get set }    
-    var willPresent: (()->())? { get set }
-    var willDismiss: (()->())? { get set }
+    var options: UIMenu.Options { get set }
     
     @available(iOS 15, *)
     var subtitle: String? { get set }
@@ -26,18 +24,6 @@ public protocol MenuBuildable: MenuElementContainer {
         
 }
 
-public extension MenuBuildable {
-    
-    mutating func addPresentHandler(_ handler: @escaping ()->()) {
-        self.willPresent = handler
-    }
-    
-    mutating func addDismissHandler(_ handler: @escaping ()->()) {
-        self.willDismiss = handler
-    }
-    
-}
-
 internal struct MenuBuilder: MenuBuildable {
         
     var title: String = ""
@@ -45,9 +31,7 @@ internal struct MenuBuilder: MenuBuildable {
     var identifier: String?
     var options: UIMenu.Options = []
     var elements: [UIMenuElement] = []
-    var willPresent: (()->())?
-    var willDismiss: (()->())?
-    
+
     @available(iOS 15, *)
     var subtitle: String? {
         get {
@@ -83,11 +67,11 @@ internal struct MenuBuilder: MenuBuildable {
 
 public extension UIMenu {
 
-    convenience init(builder: MenuProvider) {
+    convenience init(provider: MenuProvider) {
                 
         var buildable: MenuBuildable = MenuBuilder()
         
-        builder(&buildable)
+        provider(&buildable)
         
         self.init(buildable: buildable)
         
