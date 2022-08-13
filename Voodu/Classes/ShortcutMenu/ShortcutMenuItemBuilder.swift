@@ -7,15 +7,26 @@
 
 import UIKit
 
+/// A shortcut menu item provider used to create a `UIApplicationShortcutItem`.
 public typealias ShortcutMenuItemProvider = (inout ShortcutMenuItemBuildable)->()
 
+/// Protocol describing the characteristics of something that can build a shortcut menu item.
 public protocol ShortcutMenuItemBuildable {
     
+    /// The shortcut menu item's identifier (type).
     var identifier: String { get set }
+    
+    /// The shortcut menu item's title.
     var title: String { get set }
+    
+    /// The shortcut menu item's subtitle.
     var subtitle: String? { get set }
+    
+    /// The shortcut menu item's icon image.
     var image: UIApplicationShortcutIcon? { get set }
-    var data: [String: NSSecureCoding]? { get set }
+    
+    /// The shortcut menu item's user info dictionary.
+    var userInfo: [String: NSSecureCoding]? { get set }
     
 }
 
@@ -25,7 +36,7 @@ internal struct ShortcutMenuItemBuilder: ShortcutMenuItemBuildable {
     var title: String = ""
     var subtitle: String?
     var image: UIApplicationShortcutIcon?
-    var data: [String : NSSecureCoding]?
+    var userInfo: [String : NSSecureCoding]?
     
     init() {
         //
@@ -37,8 +48,13 @@ internal struct ShortcutMenuItemBuilder: ShortcutMenuItemBuildable {
     
 }
 
+// MARK: UIApplicationShortcutItem
+
 public extension UIApplicationShortcutItem {
     
+    /// Initializes an application shortcut item, using a provider.
+    ///
+    /// - parameter provider: The shortcut menu item providing closure.
     convenience init(provider: ShortcutMenuItemProvider) {
                 
         var buildable: ShortcutMenuItemBuildable = ShortcutMenuItemBuilder()
@@ -60,7 +76,7 @@ internal extension UIApplicationShortcutItem {
             localizedTitle: buildable.title,
             localizedSubtitle: buildable.subtitle,
             icon: buildable.image,
-            userInfo: buildable.data
+            userInfo: buildable.userInfo
         )
         
     }

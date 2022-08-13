@@ -7,17 +7,20 @@
 
 import UIKit
 
+/// A contextual menu that wraps the setup, presentation, & interaction
+/// of a `UIContextMenuInteraction` & `UIContextMenuInteractionDelegate`.
 public class ContextMenu {
     
+    /// A context menu provider used to create _or_ update a `ContextMenu`.
     public typealias Provider = (ContextMenuData, inout ContextMenuBuildable)->()
-        
+    
     internal private(set) var title: String?
     internal private(set) var identifier: String?
     internal private(set) var configurationIdentifier: NSCopying?
     internal private(set) var options: UIMenu.Options = []
     internal private(set) var elements: [UIMenuElement] = []
     internal private(set) var previewProvider: (()->UIViewController?)?
-    internal private(set) var previewCommitter: ((UIViewController?)->())?
+    internal private(set) var previewCommitAction: ((UIViewController?)->())?
     internal private(set) var previewCommitStyle: UIContextMenuInteractionCommitStyle = .pop
     internal private(set) var targetedHighlightPreviewProvider: (()->UITargetedPreview?)?
     internal private(set) var targetedDismissPreviewProvider: (()->UITargetedPreview?)?
@@ -46,6 +49,13 @@ public class ContextMenu {
     
     // MARK: Initializers
     
+    /// Initializes a context menu using a provider.
+    ///
+    /// - parameter provider: The context menu providing closure.
+    ///
+    /// `ContextMenu` **does not** keep a strong reference to its underlying
+    /// `UIContextMenuInteraction` or `UIContextMenuInteractionDelegate`. You are
+    /// responsible for keeping a reference to the context menu.
     public init(provider: @escaping Provider) {
 
         self.provider = provider
@@ -64,6 +74,11 @@ public class ContextMenu {
     
     // MARK: Data
     
+    /// Sets a piece data for a given key.
+    ///
+    /// - parameter data: The data.
+    /// - parameter key: The key to associate the data to.
+    /// - returns: This context menu.
     @discardableResult
     public func setData(_ data: Any?,
                         forKey key: String) -> Self {
@@ -77,20 +92,33 @@ public class ContextMenu {
         
     }
     
+    /// Retrieves a piece of data associated with a given key.
+    ///
+    /// - parameter key: The associated data's key.
+    /// - returns: The associated data.
     public func getData(_ key: String) -> Any? {
         return self.data.get(key)
     }
     
     // MARK: Interactions
     
+    /// Returns a new interaction for this context menu.
+    ///
+    /// - returns: A context menu interaction.
     public func asInteraction() -> ContextMenuInteraction {
         return ContextMenuInteraction(contextMenu: self)
     }
     
+    /// Returns a new table-interaction for this context menu.
+    ///
+    /// - returns: A context menu table-interaction.
     public func asTableInteraction() -> ContextMenuTableInteraction {
         return ContextMenuTableInteraction(contextMenu: self)
     }
     
+    /// Returns a new collection-interaction for this context menu.
+    ///
+    /// - returns: A context menu table-interaction.
     public func asCollectionInteraction() -> ContextMenuCollectionInteraction {
         return ContextMenuCollectionInteraction(contextMenu: self)
     }
@@ -113,7 +141,7 @@ public class ContextMenu {
         self.options = buildable.options
         self.elements = buildable.elements
         self.previewProvider = buildable.previewProvider
-        self.previewCommitter = buildable.previewCommitter
+        self.previewCommitAction = buildable.previewCommitAction
         self.previewCommitStyle = buildable.previewCommitStyle
         self.targetedHighlightPreviewProvider = buildable.targetedHighlightPreviewProvider
         self.targetedDismissPreviewProvider = buildable.targetedDismissPreviewProvider

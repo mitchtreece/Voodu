@@ -9,6 +9,9 @@ import UIKit
 
 public extension UIApplication {
     
+    /// Creates & adds a shortcut menu to the application, using a provider.
+    ///
+    /// - parameter provider: The shortcut menu providing closure.
     func addShortcutMenu(provider: ShortcutMenuProvider) {
         
         var buildable: ShortcutMenuBuildable = ShortcutMenuBuilder()

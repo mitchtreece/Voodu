@@ -7,19 +7,39 @@
 
 import UIKit
 
+/// Protocol describing the characteristics of something
+/// that can present a menu.
 public protocol MenuTarget: AnyObject {
     
+    /// An optional menu for the target to display.
     var menu: UIMenu? { get set }
+    
+    /// The target's current context menu interaction.
     var contextMenuInteraction: UIContextMenuInteraction? { get }
 
 }
 
 public extension MenuTarget {
     
+    /// Adds a menu to the target.
+    ///
+    /// - parameter menu: The menu to add.
+    ///
+    /// `Menu` **does not** keep a strong reference to its underlying
+    /// `UIContextMenuInteraction` or `UIContextMenuInteractionDelegate`. You are
+    /// responsible for keeping a reference to the menu.
     func addMenu(_ menu: Menu) {
         menu.setup(target: self)
     }
 
+    /// Creates & adds a menu to the target, using a provider.
+    ///
+    /// - parameter provider: The menu providing closure.
+    /// - returns: The created menu.
+    ///
+    /// `Menu` **does not** keep a strong reference to its underlying
+    /// `UIContextMenuInteraction` or `UIContextMenuInteractionDelegate`. You are
+    /// responsible for keeping a reference to the menu.
     func addMenu(provider: @escaping (inout MenuBuildable)->()) -> Menu {
 
         let menu = Menu(provider: provider)
@@ -29,6 +49,9 @@ public extension MenuTarget {
         
     }
     
+    /// Removes a menu from the target.
+    ///
+    /// - parameter menu: The menu to remove.
     func removeMenu(_ menu: Menu) {
         
         guard menu == self.targetMenu else { return }

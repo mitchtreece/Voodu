@@ -7,18 +7,26 @@
 
 import UIKit
 
-public typealias MenuProvider = (inout MenuBuildable)->()
-
+/// Protocol describing the characteristics of something that can build a `Menu`.
 public protocol MenuBuildable: MenuElementContainer {
     
+    /// The menu's title.
     var title: String { get set }
+    
+    /// The menu's icon image.
     var image: UIImage? { get set }
+    
+    /// The menu's identifier.
     var identifier: String? { get set }
+    
+    /// The menu's options.
     var options: UIMenu.Options { get set }
     
+    /// The menu's subtitle.
     @available(iOS 15, *)
     var subtitle: String? { get set }
     
+    /// The menu's element size.
     @available(iOS 16, *)
     var elementSize: UIMenu.ElementSize { get set }
         
@@ -67,7 +75,10 @@ internal struct MenuBuilder: MenuBuildable {
 
 public extension UIMenu {
 
-    convenience init(provider: MenuProvider) {
+    /// Initializes a menu, using a provider.
+    ///
+    /// - parameter provider: The menu providing closure.
+    convenience init(provider: Menu.Provider) {
                 
         var buildable: MenuBuildable = MenuBuilder()
         

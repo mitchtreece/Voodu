@@ -92,12 +92,12 @@ internal class ContextMenuInteractionDelegate: NSObject, UIContextMenuInteractio
                                 animator: UIContextMenuInteractionCommitAnimating) {
         
         guard let contextMenu = self.contextMenu,
-              let committer = contextMenu.previewCommitter else { return }
+              let action = contextMenu.previewCommitAction else { return }
 
         animator.preferredCommitStyle = contextMenu.previewCommitStyle
 
         animator.addCompletion {
-            committer(animator.previewViewController)
+            action(animator.previewViewController)
         }
         
     }

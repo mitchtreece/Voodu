@@ -56,7 +56,7 @@ class TableViewController: UITableViewController {
 
             }
             
-            menu.addPreviewCommitter { vc in
+            menu.addPreviewAction { vc in
                 self.presentItemAtIndexPath(indexPath)
             }
             

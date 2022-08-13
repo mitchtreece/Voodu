@@ -98,7 +98,7 @@
 		C6E07D6588B626DB4A47EDC776216C19 /* Pods-Voodu_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Voodu_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		CA4BC2446AF87FD239F54D1B907B12F5 /* UIApplication+ShortcutMenu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIApplication+ShortcutMenu.swift"; sourceTree = "<group>"; };
 		CC77BC964A05505F95626EAEC1964136 /* Pods-Voodu_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Voodu_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		CEFADD123FB3FBEE637EF5C7940E9451 /* MenuBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuBuilder.swift; path = Voodu/Classes/MenuBuilder.swift; sourceTree = "<group>"; };
+		CEFADD123FB3FBEE637EF5C7940E9451 /* MenuBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuBuilder.swift; sourceTree = "<group>"; };
 		D64C52612636D9D7207FE1F9BBA7C011 /* ContextMenuBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuBuilder.swift; sourceTree = "<group>"; };
 		E14BD7A437AD45CAF873151E43693831 /* Pods-Voodu_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Voodu_Example-umbrella.h"; sourceTree = "<group>"; };
 		EA29E30FDB1887597EABA341F5227D7F /* Pods-Voodu_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Voodu_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				A73D066DCBCDDD5A083EAF5EFB7A0E70 /* Menu.swift */,
+				CEFADD123FB3FBEE637EF5C7940E9451 /* MenuBuilder.swift */,
 				6E349463D178A4F272EE36022DD32A5E /* MenuInteraction.swift */,
 				43BCA975D43367E55A7D5DDE2F2765D0 /* MenuTarget.swift */,
 				692D642AC67A0A4E0F9DF0AF972267DF /* UIButton+MenuTarget.swift */,
@@ -200,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				84F775CE21D7CB0243F388AD0C8D14B1 /* ActionBuilder.swift */,
-				CEFADD123FB3FBEE637EF5C7940E9451 /* MenuBuilder.swift */,
 				2F090D9D613104A0BB3CD2A290F4AF21 /* MenuElementContainer.swift */,
 				6C9E83083D2BA6941F6B03F1A13177CE /* Menu */,
 				1B6F0BB245FE0D62984856264AD4FF03 /* ContextMenu */,

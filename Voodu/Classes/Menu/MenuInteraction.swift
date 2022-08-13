@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Menu interaction object.
 public struct MenuInteraction {
     
     internal weak var menu: Menu?
@@ -15,6 +16,11 @@ public struct MenuInteraction {
         self.menu = menu
     }
     
+    // MARK: UIContextMenuInteraction
+    
+    /// Updates the currently visible menu.
+    ///
+    /// This method does nothing if a menu is not currently being presented for this interaction.
     @available(iOS 14, *)
     func updateVisible(block: (UIMenu)->UIMenu) {
                 
@@ -25,6 +31,9 @@ public struct MenuInteraction {
         
     }
     
+    /// Dismisses the currently visible menu.
+    ///
+    /// This method does nothing if a menu is not currently being presented for this interaction.
     func dismiss() {
                 
         self.menu?

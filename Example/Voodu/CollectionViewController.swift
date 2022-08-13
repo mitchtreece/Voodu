@@ -87,7 +87,7 @@ class CollectionViewController: UICollectionViewController {
 
             }
             
-            menu.addPreviewCommitter { vc in
+            menu.addPreviewAction { vc in
                 self.presentItemAtIndexPath(indexPath)
             }
             

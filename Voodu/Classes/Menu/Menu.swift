@@ -7,8 +7,11 @@
 
 import UIKit
 
+/// A menu that wraps the setup, presentation, & interaction
+/// of a UI-component attached `UIMenu`.
 public class Menu: NSObject {
     
+    /// A menu provider used to create _or_ update a `Menu`.
     public typealias Provider = (inout MenuBuildable)->()
      
     internal private(set) var title: String = ""
@@ -44,19 +47,33 @@ public class Menu: NSObject {
     
     internal private(set) weak var target: MenuTarget?
     
+    // MARK: Initializers
+    
+    /// Initializes a menu using a provider.
+    ///
+    /// - parameter provider: The menu providing closure.
+    ///
+    /// `Menu` **does not** keep a strong reference to its underlying
+    /// `UIContextMenuInteraction` or `UIContextMenuInteractionDelegate`. You are
+    /// responsible for keeping a reference to the menu.
     public init(provider: @escaping Provider) {
 
         self.provider = provider
         
         super.init()
-
+        
         var buildable: MenuBuildable = MenuBuilder()
         self.provider(&buildable)
         update(using: buildable)
 
     }
     
-    public func interaction() -> MenuInteraction {
+    // MARK: Interactions
+    
+    /// Returns a new interaction for this menu.
+    ///
+    /// - returns: A menu interaction.
+    public func asInteraction() -> MenuInteraction {
         return MenuInteraction(menu: self)
     }
     
