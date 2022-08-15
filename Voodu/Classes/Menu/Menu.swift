@@ -7,8 +7,8 @@
 
 import UIKit
 
-/// A menu that wraps the setup, presentation, & interaction
-/// of a UI-component attached `UIMenu`.
+/// A menu that manages the setup, presentation, & interaction
+/// of a `UIMenu` when attached to a supported view or control.
 public class Menu: NSObject {
     
     /// A menu provider used to create _or_ update a `Menu`.
@@ -54,8 +54,7 @@ public class Menu: NSObject {
     /// - parameter provider: The menu providing closure.
     ///
     /// `Menu` **does not** keep a strong reference to its underlying
-    /// `UIContextMenuInteraction` or `UIContextMenuInteractionDelegate`. You are
-    /// responsible for keeping a reference to the menu.
+    /// `UIContextMenuInteraction` or `UIContextMenuInteractionDelegate`.
     public init(provider: @escaping Provider) {
 
         self.provider = provider

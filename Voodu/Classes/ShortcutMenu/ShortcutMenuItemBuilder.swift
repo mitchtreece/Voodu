@@ -36,7 +36,7 @@ internal struct ShortcutMenuItemBuilder: ShortcutMenuItemBuildable {
     var title: String = ""
     var subtitle: String?
     var image: UIApplicationShortcutIcon?
-    var userInfo: [String : NSSecureCoding]?
+    var userInfo: [String: NSSecureCoding]?
     
     init() {
         //

@@ -42,19 +42,18 @@ class CollectionViewController: UICollectionViewController {
         
         self.collectionMenu = ContextMenu { [weak self] data, menu in
                            
-            guard let self = self else { return }
             guard let indexPath = data.indexPath() else { return }
                         
             menu.addAction { action in
                 
-                let isAdded = self.addedItemMap[indexPath] ?? false
+                let isAdded = self?.addedItemMap[indexPath] ?? false
                                 
                 action.title = isAdded ? "Remove" : "Add"
                 action.image = UIImage(systemName: isAdded ? "minus.circle" : "plus.circle")
                 action.attributes = isAdded ? .destructive : []
                 
                 action.handler = { _ in
-                    self.addOrRemoveAt(indexPath: indexPath)
+                    self?.addOrRemoveAt(indexPath: indexPath)
                 }
                 
             }
@@ -63,8 +62,8 @@ class CollectionViewController: UICollectionViewController {
                 
                 guard let color = data["color"] as? Color else { return nil }
    
-                let previewViewController = self.buildDetailViewController(color: color)
-                previewViewController.preferredContentSize = CGSize(width: 300, height: 300)
+                let previewViewController = self?.buildDetailViewController(color: color)
+                previewViewController?.preferredContentSize = CGSize(width: 300, height: 300)
                 return previewViewController
                 
             }
@@ -77,7 +76,7 @@ class CollectionViewController: UICollectionViewController {
                 
                 parameters.visiblePath = UIBezierPath(
                     roundedRect: cell.contentView.frame,
-                    cornerRadius: self.itemCornerRadius
+                    cornerRadius: self?.itemCornerRadius ?? 0
                 )
 
                 return UITargetedPreview(
@@ -88,7 +87,7 @@ class CollectionViewController: UICollectionViewController {
             }
             
             menu.addPreviewAction { vc in
-                self.presentItemAtIndexPath(indexPath)
+                self?.presentItemAtIndexPath(indexPath)
             }
             
         }

@@ -41,28 +41,31 @@ class ViewController: UIViewController {
         if #available(iOS 14, *) {
             
             self.optionsItemMenu = self.optionsBarButtonItem.addMenu { [weak self] menu in
-
-                guard let self = self else { return }
+                
+                guard let strongSelf = self else { return }
+                
+                let isFavorite = strongSelf.isFavorite
+                let isShared = strongSelf.isShared
                 
                 menu.addAction { action in
 
-                    action.title = self.isFavorite ? "Remove favorite" : "Add favorite"
-                    action.image = self.isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+                    action.title = isFavorite ? "Remove favorite" : "Add favorite"
+                    action.image = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
 
                     action.handler = { _ in
-                        self.isFavorite.toggle()
+                        self?.isFavorite.toggle()
                     }
 
                 }
 
                 menu.addAction { action in
 
-                    action.title = self.isShared ? "Shared" : "Share"
-                    action.image = self.isShared ? UIImage(systemName: "square.and.arrow.up.fill") : UIImage(systemName: "square.and.arrow.up")
-                    action.state = self.isShared ? .on : .off
+                    action.title = isShared ? "Shared" : "Share"
+                    action.image = isShared ? UIImage(systemName: "square.and.arrow.up.fill") : UIImage(systemName: "square.and.arrow.up")
+                    action.state = isShared ? .on : .off
 
                     action.handler = { _ in
-                        self.isShared.toggle()
+                        self?.isShared.toggle()
                     }
 
                 }
@@ -75,27 +78,30 @@ class ViewController: UIViewController {
 
             self.optionsButtonMenu = self.optionsButton.addMenu { [weak self] menu in
 
-                guard let self = self else { return }
-
+                guard let strongSelf = self else { return }
+                
+                let isFavorite = strongSelf.isFavorite
+                let isShared = strongSelf.isShared
+                
                 menu.addAction { action in
 
-                    action.title = self.isFavorite ? "Remove favorite" : "Add favorite"
-                    action.image = self.isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+                    action.title = isFavorite ? "Remove favorite" : "Add favorite"
+                    action.image = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
 
                     action.handler = { _ in
-                        self.isFavorite.toggle()
+                        self?.isFavorite.toggle()
                     }
 
                 }
 
                 menu.addAction { action in
 
-                    action.title = self.isShared ? "Shared" : "Share"
-                    action.image = self.isShared ? UIImage(systemName: "square.and.arrow.up.fill") : UIImage(systemName: "square.and.arrow.up")
-                    action.state = self.isShared ? .on : .off
+                    action.title = isShared ? "Shared" : "Share"
+                    action.image = isShared ? UIImage(systemName: "square.and.arrow.up.fill") : UIImage(systemName: "square.and.arrow.up")
+                    action.state = isShared ? .on : .off
 
                     action.handler = { _ in
-                        self.isShared.toggle()
+                        self?.isShared.toggle()
                     }
 
                 }
@@ -111,7 +117,7 @@ class ViewController: UIViewController {
                     action.image = UIImage(systemName: "list.bullet")
 
                     action.handler = { _ in
-                        self.didTapTable()
+                        self?.didTapTable()
                     }
                     
                 }
@@ -127,7 +133,7 @@ class ViewController: UIViewController {
                     action.image = UIImage(systemName: "tablecells")
 
                     action.handler = { _ in
-                        self.didTapCollection()
+                        self?.didTapCollection()
                     }
                     
                 }
@@ -138,27 +144,30 @@ class ViewController: UIViewController {
         
         self.optionsViewMenu = self.optionsView.addContextMenu { [weak self] data, menu in
 
-            guard let self = self else { return }
+            guard let strongSelf = self else { return }
+            
+            let isFavorite = strongSelf.isFavorite
+            let isShared = strongSelf.isShared
 
             menu.addAction { action in
 
-                action.title = self.isFavorite ? "Remove favorite" : "Add favorite"
-                action.image = self.isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+                action.title = isFavorite ? "Remove favorite" : "Add favorite"
+                action.image = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
 
                 action.handler = { _ in
-                    self.isFavorite.toggle()
+                    self?.isFavorite.toggle()
                 }
 
             }
 
             menu.addAction { action in
 
-                action.title = self.isShared ? "Shared" : "Share"
-                action.image = self.isShared ? UIImage(systemName: "square.and.arrow.up.fill") : UIImage(systemName: "square.and.arrow.up")
-                action.state = self.isShared ? .on : .off
+                action.title = isShared ? "Shared" : "Share"
+                action.image = isShared ? UIImage(systemName: "square.and.arrow.up.fill") : UIImage(systemName: "square.and.arrow.up")
+                action.state = isShared ? .on : .off
 
                 action.handler = { _ in
-                    self.isShared.toggle()
+                    self?.isShared.toggle()
                 }
 
             }

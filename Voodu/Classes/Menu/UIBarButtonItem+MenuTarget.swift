@@ -115,7 +115,7 @@ extension UIBarButtonItem: MenuTarget {
                 
         if let control = self.control, !self.didAddMenuAction {
 
-            let action = UIAction(identifier: .init("preheat_menu_action")) { [weak self] _ in
+            let action = UIAction(identifier: .init("voodu_bar_button_item_action")) { [weak self] _ in
 
                 guard let self = self, control.isContextMenuInteractionEnabled else { return }
 

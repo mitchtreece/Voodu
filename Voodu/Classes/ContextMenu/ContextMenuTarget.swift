@@ -22,8 +22,6 @@ public protocol ContextMenuTarget {
     
 }
 
-extension UIView: ContextMenuTarget {}
-
 public extension ContextMenuTarget {
         
     /// Adds a context menu to the target.
@@ -75,3 +73,5 @@ public extension ContextMenuTarget {
     }
 
 }
+
+extension UIView: ContextMenuTarget {}

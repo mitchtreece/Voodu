@@ -7,8 +7,7 @@
 
 import UIKit
 
-/// Protocol describing the characteristics of something
-/// that can present a menu.
+/// Protocol describing the characteristics of something that can present a menu.
 public protocol MenuTarget: AnyObject {
     
     /// An optional menu for the target to display.

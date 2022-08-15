@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// A contextual menu that wraps the setup, presentation, & interaction
+/// A contextual menu that manages the setup, presentation, & interaction
 /// of a `UIContextMenuInteraction` & `UIContextMenuInteractionDelegate`.
 public class ContextMenu {
     
@@ -54,8 +54,7 @@ public class ContextMenu {
     /// - parameter provider: The context menu providing closure.
     ///
     /// `ContextMenu` **does not** keep a strong reference to its underlying
-    /// `UIContextMenuInteraction` or `UIContextMenuInteractionDelegate`. You are
-    /// responsible for keeping a reference to the context menu.
+    /// `UIContextMenuInteraction` or `UIContextMenuInteractionDelegate`.
     public init(provider: @escaping Provider) {
 
         self.provider = provider
