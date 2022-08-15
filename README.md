@@ -1,29 +1,52 @@
+![Voodu](Assets/Banner.png)
+
 # Voodu
 
-[![CI Status](https://img.shields.io/travis/Mitch Treece/Voodu.svg?style=flat)](https://travis-ci.org/Mitch Treece/Voodu)
-[![Version](https://img.shields.io/cocoapods/v/Voodu.svg?style=flat)](https://cocoapods.org/pods/Voodu)
-[![License](https://img.shields.io/cocoapods/l/Voodu.svg?style=flat)](https://cocoapods.org/pods/Voodu)
-[![Platform](https://img.shields.io/cocoapods/p/Voodu.svg?style=flat)](https://cocoapods.org/pods/Voodu)
+![iOS](https://img.shields.io/badge/iOS-13+-green.svg?style=for-the-badge)
+![Swift](https://img.shields.io/badge/Swift-5-orange.svg?style=for-the-badge)
+![SPM](https://img.shields.io/badge/SPM-1.0.0-orange.svg?style=for-the-badge)
+[![Cocoapods](https://img.shields.io/cocoapods/v/Voodu.svg?style=for-the-badge)](https://cocoapods.org/pods/Voodu)
+[![License](https://img.shields.io/cocoapods/l/Voodu.svg?style=for-the-badge)](https://cocoapods.org/pods/Voodu)
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
+Voodu is a Swift context menu library for iOS. Powered by magic 🪄
 
 ## Installation
 
-Voodu is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### SPM
 
-```ruby
-pod 'Voodu'
+TODO
+
+### CocoaPods
+
+Voodu is integrated with CocoaPods!
+
+1. Add the following to your `Podfile`:
+
+```
+use_frameworks!
+pod 'Voodu', '~> 1.0'
 ```
 
-## Author
+2. In your project directory, run `pod install`
+3. Import the `Voodu` module wherever you need it
+4. Profit
 
-Mitch Treece, mitchtreece@me.com
+## Usage
 
-## License
+TODO: Quick blurb about menus on iOS, and how Voodu simplifies working with them
 
-Voodu is available under the MIT license. See the LICENSE file for more info.
+### Menus
+
+TODO
+
+### Context Menus
+
+TODO
+
+### Shortcut Menus
+
+TODO
+
+## Contributing
+
+Pull-requests are more than welcome. Bug fix? Feature? Open a PR and we'll get it merged in!
