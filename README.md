@@ -9,7 +9,6 @@
 [![License](https://img.shields.io/cocoapods/l/Voodu.svg?style=for-the-badge)](https://cocoapods.org/pods/Voodu)
 
 Voodu is a Swift context menu library for iOS. Powered by magic 🪄
-TODO: Quick blurb about menus on iOS, and how Voodu simplifies working with them
 
 ## Installation
 
@@ -164,7 +163,25 @@ self.buttonMenu = self.button.addMenu { [weak self] menu in
 
 Nice and simple, just how it should be 😎
 
-**Note**: `Menu` **does not** keep a strong reference to it's underlying components. You **must** keep a reference to any created menu yourself - otherwise it will be released.
+#### Interactions
+
+Most of the time, you don't need to do anything else. However, there are some circumstances where you want to manually interact with a presented `Menu`. To do this, we access the menu's `MenuInteraction` to, for example, update or dismiss a visible menu.
+
+```swift
+
+self.buttonMenu
+    .asInteraction()
+    .updateVisible { 
+        ... 
+    }
+
+self.buttonMenu
+    .asInteraction()
+    .dismiss()
+
+```
+
+**Note**: `Menu` & `MenuInteraction` **do not** keep a strong reference to it's underlying component. You **must** keep a reference to any created menu yourself - otherwise it will be released.
 
 ### Context Menus
 
@@ -176,7 +193,7 @@ var viewMenu: ContextMenu!
 
 ...
 
-self.viewMenu = self.view.addContextMenu { menu in
+self.viewMenu = self.view.addContextMenu { _, menu in
 
     menu.addAction { action in
     
@@ -191,7 +208,7 @@ self.viewMenu = self.view.addContextMenu { menu in
 }
 ```
 
-The semantics for `ContextMenu` are the same as `Menu`, with the addition of preview-specific properties & helpers. By default, a system-generated preview will be provided for the view presenting the context menu. If you want to customize this behavior, you can specify a custom preview provider, targeted previews, & a preview action handler.
+The semantics for `ContextMenu` are the same as `Menu`, with the addition of configurable data & preview-specific properties and helpers. By default, a system-generated preview will be provided for the view presenting the context menu. If you want to customize this behavior, you can specify a custom preview provider, targeted previews, & a preview action handler.
 
 ```swift
 var view = UIView()
@@ -208,7 +225,7 @@ func didTapPreview(_ vc: UIViewController?) {
 
 ...
 
-self.viewMenu = self.view.addContextMenu { menu in
+self.viewMenu = self.view.addContextMenu { _, menu in
 
     menu.addAction { action in
     
@@ -246,11 +263,141 @@ self.viewMenu = self.view.addContextMenu { menu in
 
 #### Table & Collection Interactions
 
-TODO
+Context menus are often presented from table & collection cells. Again, the standard `UIKit` setup for this functionality is rather annoying. Luckily, `ContextMenu` was built with this functionality in mind. Just like `Menu`, `ContextMenu` has a `ContextMenuInteraction` that can be used when you need to directly interact with a visible menu. However, `ContextMenu` also has `ContextMenuTableInteraction` & `ContextMenuCollectionInteraction` variants that make it a lot more streamlined when trying to implement this sort of functionality.
+
+```swift
+var tableMenu: ContextMenu!
+
+...
+
+self.tableMenu = ContextMenu { data, menu in
+
+    let indexPath = data.indexPath() ?? .zero
+
+    menu.addAction { action in
+    
+        action.title = "Tap me, I'm a table cell action!"
+
+        action.handler = { _ in
+            print("You tapped the table cell action at index path: \(indexPath)!")
+        }
+    
+    }
+
+}
+
+...
+
+override func tableView(_ tableView: UITableView,
+                        contextMenuConfigurationForRowAt indexPath: IndexPath,
+                        point: CGPoint) -> UIContextMenuConfiguration? {
+        
+    return self.tableMenu
+        .asTableInteraction()
+        .configuration(
+            in: tableView,
+            indexPath: indexPath,
+            point: point
+        )
+    
+}
+
+override func tableView(_ tableView: UITableView,
+                        willDisplayContextMenu configuration: UIContextMenuConfiguration,
+                        animator: UIContextMenuInteractionAnimating?) {
+    
+    self.tableMenu
+        .asTableInteraction()
+        .willDisplay(
+            in: tableView,
+            configuration: configuration,
+            animator: animator
+        )
+    
+}
+
+override func tableView(_ tableView: UITableView,
+                        willEndContextMenuInteraction configuration: UIContextMenuConfiguration,
+                        animator: UIContextMenuInteractionAnimating?) {
+    
+    self.tableMenu
+        .asTableInteraction()
+        .willEnd(
+            in: tableView,
+            configuration: configuration,
+            animator: animator
+        )
+    
+}
+
+override func tableView(_ tableView: UITableView,
+                        previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+    
+    return self.tableMenu
+        .asTableInteraction()
+        .highlightPreview(
+            in: tableView,
+            configuration: configuration
+        )
+    
+}
+
+override func tableView(_ tableView: UITableView,
+                        previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+    
+    return self.tableMenu
+        .asTableInteraction()
+        .dismissPreview(
+            in: tableView,
+            configuration: configuration
+        )
+    
+}
+
+override func tableView(_ tableView: UITableView,
+                        willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration,
+                        animator: UIContextMenuInteractionCommitAnimating) {
+    
+    self.tableMenu
+        .asTableInteraction()
+        .willPerformPreviewAction(
+            in: tableView,
+            configuration: configuration,
+            animator: animator
+        )
+    
+}
+```
+
+Still a little verbose, but unfortunately with how `UIKit` handles table & collection delegates, this is the best we can do. Note the use of the `data` variable passed into the context menu's closure. By default, when using a `ContextMenu` table or collection interaction, the index path & cell are automatically added to the menu's data container. They can be retrieved by calling the one of the container's helper functions: `data.indexPath()` or `data.cell()`.
 
 ### Shortcut Menus
 
-TODO
+The simplest and least convoluted of all menus created with standard `UIKit` API's, application shortcut items (`UIApplicationShortcutItem`) really don't have any weird quirks that needed to be solved. However, to bring shortcut item creation in line with the other menu semantics, helpers have been added for good measure 😄
+
+```swift
+UIApplication.shared.addShortcutMenu { menu in
+
+    menu.addItem { item in
+        
+        item.identifier = "shortcut_item_1"
+        item.title = "This is a shortcut item"
+        item.image = .init(systemImageName: "1.circle")
+        
+    }
+
+    menu.addItem { item in
+        
+        item.identifier = "shortcut_item_2"
+        item.title = "This is another one"
+        item.image = .init(systemImageName: "2.circle")
+
+    }
+
+}
+```
+
+Handling of these shortcut actions is done the same as before via `UIApplicationDelegate` (or `UIWindowSceneDelegate`) functions.
 
 ## Contributing
 
