@@ -38,6 +38,76 @@ class ViewController: UIViewController {
 
     private func setupMenus() {
         
+        self.optionsViewMenu = self.optionsView.addContextMenu { [weak self] data, menu in
+
+            guard let strongSelf = self else { return }
+            
+            let isFavorite = strongSelf.isFavorite
+            let isShared = strongSelf.isShared
+
+            menu.addAction { action in
+
+                action.title = isFavorite ? "Remove favorite" : "Add favorite"
+                action.image = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+
+                action.handler = { _ in
+                    self?.isFavorite.toggle()
+                }
+
+            }
+
+            menu.addAction { action in
+
+                action.title = isShared ? "Shared" : "Share"
+                action.image = isShared ? UIImage(systemName: "square.and.arrow.up.fill") : UIImage(systemName: "square.and.arrow.up")
+                action.state = isShared ? .on : .off
+
+                action.handler = { _ in
+                    self?.isShared.toggle()
+                }
+
+            }
+            
+            if #available(iOS 14, *) {
+             
+                menu.addDeferredElements { completion in
+                    
+                    let action = UIAction { a in
+                        a.title = "Deferred action"
+                    }
+                                        
+                    Task {
+                        
+                        try! await Task.sleep(nanoseconds: 2000000000)
+                        completion([action])
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            if #available(iOS 15, *) {
+                
+                menu.addUncachedDeferredElements { completion in
+                    
+                    let action = UIAction { a in
+                        a.title = "Uncached deferred action"
+                    }
+                                        
+                    Task {
+                        
+                        try! await Task.sleep(nanoseconds: 3000000000)
+                        completion([action])
+                        
+                    }
+                    
+                }
+                
+            }
+
+        }
+        
         if #available(iOS 14, *) {
             
             self.optionsItemMenu = self.optionsBarButtonItem.addMenu { [weak self] menu in
@@ -140,38 +210,6 @@ class ViewController: UIViewController {
 
             }
             
-        }
-        
-        self.optionsViewMenu = self.optionsView.addContextMenu { [weak self] data, menu in
-
-            guard let strongSelf = self else { return }
-            
-            let isFavorite = strongSelf.isFavorite
-            let isShared = strongSelf.isShared
-
-            menu.addAction { action in
-
-                action.title = isFavorite ? "Remove favorite" : "Add favorite"
-                action.image = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
-
-                action.handler = { _ in
-                    self?.isFavorite.toggle()
-                }
-
-            }
-
-            menu.addAction { action in
-
-                action.title = isShared ? "Shared" : "Share"
-                action.image = isShared ? UIImage(systemName: "square.and.arrow.up.fill") : UIImage(systemName: "square.and.arrow.up")
-                action.state = isShared ? .on : .off
-
-                action.handler = { _ in
-                    self?.isShared.toggle()
-                }
-
-            }
-
         }
         
     }

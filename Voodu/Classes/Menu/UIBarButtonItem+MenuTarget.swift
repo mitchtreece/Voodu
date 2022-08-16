@@ -115,27 +115,28 @@ extension UIBarButtonItem: MenuTarget {
                 
         if let control = self.control, !self.didAddMenuAction {
 
-            let action = UIAction(identifier: .init("voodu_bar_button_item_action")) { [weak self] _ in
-
-                guard let self = self, control.isContextMenuInteractionEnabled else { return }
-
-                self.menu = itemMenu.menu()
-
-                // itemMenu.willPresent?()
-
-            }
-
-            control.addAction(
-                action,
-                for: .touchDown
+            let recognizer = UILongPressGestureRecognizer(
+                target: self,
+                action: #selector(voodu_handlePress(_:))
             )
-
+            
+            recognizer.minimumPressDuration = 0.01
+            control.addGestureRecognizer(recognizer)
+            
             self.didAddMenuAction = true
 
         }
                 
         return itemMenu.menu()
                 
+    }
+    
+    @objc private func voodu_handlePress(_ recognizer: UILongPressGestureRecognizer) {
+        
+        guard recognizer.state == .recognized else { return }
+        
+        self.menu = self.itemMenu?.menu()
+        
     }
     
 }
