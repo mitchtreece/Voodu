@@ -18,6 +18,6 @@ Pod::Spec.new do |s|
 
   s.swift_version         = '5'
   s.ios.deployment_target = '13.0'
-  s.source_files          = 'Sources/**/*'
+  s.source_files          = 'Sources/Voodu/**/*'
 
 end
