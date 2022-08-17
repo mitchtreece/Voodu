@@ -3,15 +3,15 @@
 import PackageDescription
 
 let package = Package(
-
+    
     name: "Voodu",
-
+    
     platforms: [
-
+        
         .iOS(.v13)
-
+        
     ],
-
+    
     products: [
 
         .library(
@@ -20,14 +20,11 @@ let package = Package(
         )
 
     ],
-
+    
     targets: [
 
-        .target(
-            name: "Voodu",
-            path: "Voodu/Classes",
-        )
+        .target(name: "Voodu")
 
-    ],
-
+    ]
+    
 )
