@@ -1,6 +1,6 @@
 ![Voodu](Assets/Banner.png)
 
-<center>
+<div align="center">
 
 ![Version](https://img.shields.io/badge/Version-1.0.0-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
 ![iOS](https://img.shields.io/badge/iOS-13+-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
@@ -9,7 +9,7 @@
 
 Swift context menu library for iOS. Powered by magic 🪄
 
-</center>
+</div>
 
 # Voodu
 
