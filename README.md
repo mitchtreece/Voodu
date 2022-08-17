@@ -7,11 +7,11 @@
 ![Swift](https://img.shields.io/badge/Swift-5-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
 ![Xcode](https://img.shields.io/badge/Xcode-14-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
 
-Swift context menu library for iOS. Powered by magic 🪄
-
 </div>
 
 # Voodu
+
+Voodu is a Swift context menu library for iOS. Powered by magic 🪄
 
 ## ⚠️ iOS 16 & Xcode 14
 
