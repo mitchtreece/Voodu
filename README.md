@@ -1,14 +1,17 @@
 ![Voodu](Assets/Banner.png)
 
+<center>
+
+![Version](https://img.shields.io/badge/Version-1.0.0-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
+![iOS](https://img.shields.io/badge/iOS-13+-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
+![Swift](https://img.shields.io/badge/Swift-5-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
+![Xcode](https://img.shields.io/badge/Xcode-14-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
+
+Swift context menu library for iOS. Powered by magic 🪄
+
+</center>
+
 # Voodu
-
-![iOS](https://img.shields.io/badge/iOS-13+-green.svg?style=for-the-badge)
-![Swift](https://img.shields.io/badge/Swift-5-orange.svg?style=for-the-badge)
-![SPM](https://img.shields.io/badge/SPM-1.0.0-orange.svg?style=for-the-badge)
-[![Cocoapods](https://img.shields.io/cocoapods/v/Voodu.svg?style=for-the-badge)](https://cocoapods.org/pods/Voodu)
-[![License](https://img.shields.io/cocoapods/l/Voodu.svg?style=for-the-badge)](https://cocoapods.org/pods/Voodu)
-
-Voodu is a Swift context menu library for iOS. Powered by magic 🪄
 
 ## ⚠️ iOS 16 & Xcode 14
 
