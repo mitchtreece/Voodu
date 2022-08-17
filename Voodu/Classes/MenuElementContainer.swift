@@ -62,9 +62,6 @@ public extension MenuElementContainer {
     /// Adds a deferred menu element.
     ///
     /// - parameter block: The deferred elements providing closure.
-    ///
-    /// The closure will only be called once.
-    /// The returned elements will be cached and used during subsequent menu presentations.
     @available(iOS 14, *)
     mutating func addDeferredElements(provider: @escaping (@escaping ([UIMenuElement])->())->()) {
 
@@ -73,22 +70,6 @@ public extension MenuElementContainer {
         // so the builder pattern `init(buildable:)` won't work.
 
         addElement(UIDeferredMenuElement(provider))
-
-    }
-
-    /// Adds an uncached deferred menu element.
-    ///
-    /// - parameter block: The deferred element providing closure.
-    ///
-    /// The closure will be called every time a menu presentation is performed.
-    @available(iOS 15, *)
-    mutating func addUncachedDeferredElements(provider: @escaping (@escaping ([UIMenuElement])->())->()) {
-
-        // Not using builders here because we only pass in one (required) thing.
-        // Also, the way to init an `uncached` deferred element is a static function,
-        // so the builder pattern `init(buildable:)` won't work.
-
-        addElement(UIDeferredMenuElement.uncached(provider))
 
     }
 

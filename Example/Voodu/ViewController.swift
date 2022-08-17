@@ -73,31 +73,15 @@ class ViewController: UIViewController {
                 menu.addDeferredElements { completion in
                     
                     let action = UIAction { a in
-                        a.title = "Deferred action"
+                        
+                        a.title = "Thanks for waiting!"
+                        a.image = UIImage(systemName: "clock")
+                        
                     }
                                         
                     Task {
                         
                         try! await Task.sleep(nanoseconds: 2000000000)
-                        completion([action])
-                        
-                    }
-                    
-                }
-                
-            }
-            
-            if #available(iOS 15, *) {
-                
-                menu.addUncachedDeferredElements { completion in
-                    
-                    let action = UIAction { a in
-                        a.title = "Uncached deferred action"
-                    }
-                                        
-                    Task {
-                        
-                        try! await Task.sleep(nanoseconds: 3000000000)
                         completion([action])
                         
                     }
