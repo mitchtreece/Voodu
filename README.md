@@ -19,10 +19,7 @@ Voodu is a Swift context menu library for iOS. Powered by magic 🪄
 ### SPM
 
 ```
-.package(
-    url: "https://github.com/mitchtreece/Voodu.git", 
-    .upToNextMajor(from: "1.0.0")
-)
+.package(url: "https://github.com/mitchtreece/Voodu.git", .upToNextMajor(from: "1.0.0"))
 ```
 
 ### CocoaPods
