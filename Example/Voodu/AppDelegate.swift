@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Voodu
 //
-//  Created by Mitch Treece on 08/10/2022.
-//  Copyright (c) 2022 Mitch Treece. All rights reserved.
+//  Created by Mitch Treece on 8/10/2022.
+//  Copyright © 2022 Mitch Treece. All rights reserved.
 //
 
 import UIKit
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates.
         // Games should use this method to pause the game.
-        
+                
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -62,6 +62,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
 
-
 }
-

@@ -1,8 +1,8 @@
 {
   "name": "Voodu",
   "version": "1.0.0",
-  "summary": "TODO",
-  "description": "TODO",
+  "summary": "Swift context menu library for iOS. Powered by magic.",
+  "description": "Voodu is a Swift context menu library for iOS that simplifies the creation,\npresentation, & interaction of menus, context menus, & shortcut menus.\nPowered completely by magic.",
   "homepage": "https://github.com/mitchtreece/Voodu",
   "license": {
     "type": "MIT",
@@ -20,6 +20,6 @@
   "platforms": {
     "ios": "13.0"
   },
-  "source_files": "Voodu/Classes/**/*",
+  "source_files": "Sources/**/*",
   "swift_version": "5"
 }

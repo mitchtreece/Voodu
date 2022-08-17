@@ -3,7 +3,7 @@
 //  Voodu
 //
 //  Created by Mitch Treece on 8/8/22.
-//  Copyright (c) 2022 Mitch Treece. All rights reserved.
+//  Copyright © 2022 Mitch Treece. All rights reserved.
 //
 
 import UIKit
@@ -12,7 +12,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession,
+    func scene(_ scene: UIScene,
+               willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         
         // Use this method to optionally configure and attach the UIWindow `window`
@@ -22,6 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // (see `application:configurationForConnectingSceneSession` instead).
         
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        if let item = connectionOptions.shortcutItem {
+            print("Launched from shortcut item: \(item)")
+        }
         
     }
 
@@ -51,19 +56,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             menu.addItem { item in
                 
-                item.identifier = "hello_world"
-                item.title = "Hello, world!"
-                item.image = .init(type: .favorite)
+                item.identifier = "shortcut_item_1"
+                item.title = "This is a shortcut item"
+                item.image = .init(systemImageName: "1.circle")
                 
             }
             
             menu.addItem { item in
                 
-                item.identifier = "another_one"
-                item.title = "Another one"
-                item.subtitle = "DJ Khaleed!"
-                item.image = .init(type: .love)
-                
+                item.identifier = "shortcut_item_2"
+                item.title = "This is another one"
+                item.image = .init(systemImageName: "2.circle")
+
             }
             
         }
@@ -82,6 +86,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        
+    }
+    
+    func windowScene(_ windowScene: UIWindowScene,
+                     performActionFor shortcutItem: UIApplicationShortcutItem,
+                     completionHandler: @escaping (Bool) -> Void) {
+        
+        print("Tapped shortcut item: \(shortcutItem.type)")
         
     }
     
