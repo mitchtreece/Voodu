@@ -10,26 +10,27 @@
 
 Voodu is a Swift context menu library for iOS. Powered by magic 🪄
 
+## ⚠️ iOS 16 & Xcode 14
+
+**This library uses the iOS 16 toolchain, and therefore requires Xcode 14**
+
 ## Installation
 
 ### SPM
 
-TODO
+```
+.package(
+    url: "https://github.com/mitchtreece/Voodu.git", 
+    .upToNextMajor(from: "1.0.0")
+)
+```
 
 ### CocoaPods
-
-Voodu is integrated with CocoaPods!
-
-1. Add the following to your `Podfile`:
 
 ```
 use_frameworks!
 pod 'Voodu', '~> 1.0'
 ```
-
-2. In your project directory, run `pod install`
-3. Import the `Voodu` module wherever you need it
-4. Profit
 
 ## Usage
 
