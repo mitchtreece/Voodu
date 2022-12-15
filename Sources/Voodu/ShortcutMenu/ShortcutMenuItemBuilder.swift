@@ -51,17 +51,17 @@ internal struct ShortcutMenuItemBuilder: ShortcutMenuItemBuildable {
 // MARK: UIApplicationShortcutItem
 
 public extension UIApplicationShortcutItem {
-    
-    /// Initializes an application shortcut item, using a provider.
+
+    /// Builds an application shortcut item, using a provider.
     ///
     /// - parameter provider: The shortcut menu item providing closure.
-    convenience init(provider: ShortcutMenuItemProvider) {
-                
+    static func build(_ provider: ShortcutMenuItemProvider) -> UIApplicationShortcutItem {
+        
         var buildable: ShortcutMenuItemBuildable = ShortcutMenuItemBuilder()
         
         provider(&buildable)
         
-        self.init(buildable: buildable)
+        return UIApplicationShortcutItem(buildable: buildable)
         
     }
 

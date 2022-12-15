@@ -76,16 +76,16 @@ internal struct ActionBuilder: ActionBuildable {
 
 public extension UIAction {
     
-    /// Initializes an action, using a provider.
+    /// Builds an action, using a provider.
     ///
     /// - parameter provider: The action providing closure.
-    convenience init(provider: ActionProvider) {
+    static func build(_ provider: ActionProvider) -> UIAction {
         
         var buildable: ActionBuildable = ActionBuilder()
         
         provider(&buildable)
 
-        self.init(buildable: buildable)
+        return UIAction(buildable: buildable)
         
     }
 

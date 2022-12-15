@@ -75,16 +75,16 @@ internal struct MenuBuilder: MenuBuildable {
 
 public extension UIMenu {
 
-    /// Initializes a menu, using a provider.
+    /// Builds a menu, using a provider.
     ///
     /// - parameter provider: The menu providing closure.
-    convenience init(provider: Menu.Provider) {
-                
+    static func build(_ provider: Menu.Provider) -> UIMenu {
+        
         var buildable: MenuBuildable = MenuBuilder()
         
         provider(&buildable)
         
-        self.init(buildable: buildable)
+        return UIMenu(buildable: buildable)
         
     }
 

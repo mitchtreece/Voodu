@@ -40,7 +40,7 @@ One of the core components when creating any menu, is the creation of actions, m
 
 ```swift
 
-let action = UIAction { action in
+let action = UIAction.build { action in
 
     action.title = "Tap me, I'm an action!"
     action.image = UIImage(systemName: "hand.tap")
@@ -51,7 +51,7 @@ let action = UIAction { action in
 
 }
 
-let menu = UIMenu { menu in
+let menu = UIMenu.build { menu in
 
     menu.title = "Hello, Im a menu!"
     
@@ -377,6 +377,19 @@ Still a little verbose, but unfortunately with how `UIKit` handles table & colle
 The simplest and least convoluted of all menus created with standard `UIKit` API's, application shortcut items (`UIApplicationShortcutItem`) really don't have any weird quirks that needed to be solved. However, to bring shortcut item creation in line with the other menu semantics, helpers have been added for good measure 😄
 
 ```swift
+
+// Single Item
+
+let shortcutItem = UIApplicationShortcutItem.build { item in
+
+    item.identifier = "single_item"
+    item.title = "Single Item"
+    item.image = .init(systemImageName: "star.fill")
+
+}
+
+// Full Menu
+
 UIApplication.shared.addShortcutMenu { menu in
 
     menu.addItem { item in
