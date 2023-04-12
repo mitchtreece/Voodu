@@ -20,6 +20,6 @@
   "platforms": {
     "ios": "13.0"
   },
-  "source_files": "Sources/Voodu/**/*",
+  "source_files": "Sources/Core/**/*",
   "swift_version": "5"
 }

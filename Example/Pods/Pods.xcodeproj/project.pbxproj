@@ -8,33 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		0043324DC2C885ADC5710A259DFEB267 /* Pods-Voodu_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C004ADD094CE26ECD7ED72DAFAE25AD1 /* Pods-Voodu_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		005EA7CD40CFF700A773717B210A3883 /* ContextMenuTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA330F6176674BA6FB8BF0E1164E82 /* ContextMenuTarget.swift */; };
-		0CB937329EB92F528398E0E2B963F61E /* ContextMenuInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC94134D427C0F3C9A111CE0638A4A0 /* ContextMenuInteractionDelegate.swift */; };
-		1AFEC03C330A5673A9827E6373F4DF2E /* MenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA958A85A5542077163BF1D0FAA5218 /* MenuBuilder.swift */; };
-		25963483389B9082733028256AB2282A /* ContextMenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D35756FB7F5C71D0C5DB6E7EEB6A5 /* ContextMenuData.swift */; };
-		295F184C7992F0288397263A108CAF1C /* MenuInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0B78BC2499A3D952C4427D3CDCD63 /* MenuInteraction.swift */; };
-		423F7D4D5411B846961B8AEA0FB79393 /* ContextMenuCollectionInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29114A129A7D98F63230BD0C6F0E4D2E /* ContextMenuCollectionInteraction.swift */; };
-		447E4A33F4ADDFD6E8F0EC1DF6A539D6 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F144D43EF208A2B7557DC4D78078D8 /* Menu.swift */; };
+		005EA7CD40CFF700A773717B210A3883 /* ContextMenuTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F802B168112FFB425BBC2AF89BF67EC4 /* ContextMenuTarget.swift */; };
+		0CB937329EB92F528398E0E2B963F61E /* ContextMenuInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C347F1F1DBBDE88633D41798ED19895A /* ContextMenuInteractionDelegate.swift */; };
+		1AFEC03C330A5673A9827E6373F4DF2E /* MenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BC67222AC7114ED77C0C5A6C5CED59 /* MenuBuilder.swift */; };
+		25963483389B9082733028256AB2282A /* ContextMenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3CE8FB4C20BC59341A2E7A4E7FFBDF /* ContextMenuData.swift */; };
+		295F184C7992F0288397263A108CAF1C /* MenuInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA482CA9B474508C88F4CB01D7F98E0 /* MenuInteraction.swift */; };
+		423F7D4D5411B846961B8AEA0FB79393 /* ContextMenuCollectionInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34B0F25ED4BA5C2F9A62F5FE2D063D8 /* ContextMenuCollectionInteraction.swift */; };
+		447E4A33F4ADDFD6E8F0EC1DF6A539D6 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264471951C901AF3D108EADA0D9524F1 /* Menu.swift */; };
+		46A733634A21820EDD1DAB88864D2F42 /* ActionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEBC3D75F7A31277B09BB811CEC0CE4 /* ActionBuilder.swift */; };
 		47CA1D0D99E62938C47806E182048BE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		60AF0B35481BEC0A0315439D87D1767C /* UIBarButtonItem+MenuTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E5F1DC8ECA06E401E065F06471819A /* UIBarButtonItem+MenuTarget.swift */; };
-		6881EF996076CF77C88A525A75FE1538 /* Voodu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0E34ABA2C7E719BE4473CC31F2E4CB0 /* Voodu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C4603CE8DCCEBE7B534AF549ADA27FB /* MenuElementContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD3DBBB25709CB5E9AE126FFBCCA7D1 /* MenuElementContainer.swift */; };
+		60AF0B35481BEC0A0315439D87D1767C /* UIBarButtonItem+MenuTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0773D34377DCEEBDD2EA10D93F13F27 /* UIBarButtonItem+MenuTarget.swift */; };
+		6881EF996076CF77C88A525A75FE1538 /* Voodu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C78639BFF45D4B95C4B0EEA63D987C5 /* Voodu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		758FE82BBCEB234672FAA0441B51E600 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		7D6BED306B86E2BF4CF8E5F780D64C37 /* Pods-Voodu_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 82942449A687AB56D432D9FADE004E67 /* Pods-Voodu_Tests-dummy.m */; };
 		7EA5FD9D8F9EF419B8073522B3EB87F1 /* Pods-Voodu_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E14BD7A437AD45CAF873151E43693831 /* Pods-Voodu_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		828D43901312B5EC33396B056A10B14F /* MenuElementContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4AD870B32F23B3BB698840B419FFB3 /* MenuElementContainer.swift */; };
-		9B9C9FCA299989C0E50B58D5010BE785 /* UIApplication+ShortcutMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80215323B2F6920A3D422ED1B6ECFB54 /* UIApplication+ShortcutMenu.swift */; };
-		A143E08AA39AD3E1C8AC2FE8AE435D38 /* ContextMenuInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C676FCD6AC298FF7804288716C8F9 /* ContextMenuInteraction.swift */; };
-		A2D8C61FFCC105736C58057E73A0048D /* UIButton+MenuTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FACE2FE3FEE37B378E176ED1EEF5E9 /* UIButton+MenuTarget.swift */; };
-		A2F8A0AC19093B81E9A01DBF2062B0A1 /* MenuTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD86F6FF10DF7990802FB6D5FAC77943 /* MenuTarget.swift */; };
-		AA7736C4A3F23A526412E702DE0E63D3 /* ShortcutMenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F7656DCD1001D54520898890F2BCB5 /* ShortcutMenuBuilder.swift */; };
+		9B9C9FCA299989C0E50B58D5010BE785 /* UIApplication+ShortcutMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA4DC4A8C7F78413835F59A78ACAF6 /* UIApplication+ShortcutMenu.swift */; };
+		A143E08AA39AD3E1C8AC2FE8AE435D38 /* ContextMenuInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB4D438D41E39C20339230F8D1EA17 /* ContextMenuInteraction.swift */; };
+		A2D8C61FFCC105736C58057E73A0048D /* UIButton+MenuTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7F80BBFFB67386C18DD320B7AF7A1D /* UIButton+MenuTarget.swift */; };
+		A2F8A0AC19093B81E9A01DBF2062B0A1 /* MenuTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B47BA6ABC8A8D1AB2200A3D2B3572E /* MenuTarget.swift */; };
+		AA7736C4A3F23A526412E702DE0E63D3 /* ShortcutMenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD57694224898547C68787A99E3FD2C /* ShortcutMenuBuilder.swift */; };
 		AD24375EE9E569E52148BFD2ABE13C42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		B47D0391BE25D911AA2879D098B26611 /* Voodu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D479E92EE0CDBDF404313672064630F0 /* Voodu-dummy.m */; };
-		B5EC6DC9E6BA2328E3DC6D7526C4E4F6 /* ContextMenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15399A3F8D9697A78C0CF39986EB680A /* ContextMenuBuilder.swift */; };
-		BE399300271F19503AFE92AD31464C11 /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588B1A99CEEFD2C708B8D9BCC1AF8ED5 /* ContextMenu.swift */; };
-		C10276E649257884A0BD520F61BA4857 /* ActionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D8BDD46C380F0207D9C7C92963DE1E /* ActionBuilder.swift */; };
-		CF2A55AE7BBBA23D5C0DFF7060CB692C /* ContextMenuTableInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319028B4F045BDBC068195B6F640EE55 /* ContextMenuTableInteraction.swift */; };
+		B47D0391BE25D911AA2879D098B26611 /* Voodu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D16E4EB7F14C26C00A12A5E2045A588C /* Voodu-dummy.m */; };
+		B5EC6DC9E6BA2328E3DC6D7526C4E4F6 /* ContextMenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07319FA8C5DDF0609CBAA22F1279FA /* ContextMenuBuilder.swift */; };
+		BE399300271F19503AFE92AD31464C11 /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21788F5266D5E395137CE70A1AEECE4D /* ContextMenu.swift */; };
+		CF2A55AE7BBBA23D5C0DFF7060CB692C /* ContextMenuTableInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FF69BA6DF0E9B222FE27C92A61C577 /* ContextMenuTableInteraction.swift */; };
 		D89501CD6A888809AF04E5EE4C4AFF71 /* Pods-Voodu_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 546BF319B3B3528C2EEBD310C85F9393 /* Pods-Voodu_Example-dummy.m */; };
-		EA5A53067DCA1BFB160EFA76A26C3FAA /* ShortcutMenuItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E398B4548C191AB81C8DA37D1CFC602C /* ShortcutMenuItemBuilder.swift */; };
+		EA5A53067DCA1BFB160EFA76A26C3FAA /* ShortcutMenuItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF9A890EE15D1278D3E136F9DFB3671 /* ShortcutMenuItemBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,56 +55,56 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02BA330F6176674BA6FB8BF0E1164E82 /* ContextMenuTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuTarget.swift; sourceTree = "<group>"; };
+		0BD57694224898547C68787A99E3FD2C /* ShortcutMenuBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShortcutMenuBuilder.swift; sourceTree = "<group>"; };
 		0BFBC367A8BD47596DD3F874F419759C /* Pods-Voodu_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Voodu_Tests.modulemap"; sourceTree = "<group>"; };
-		11F144D43EF208A2B7557DC4D78078D8 /* Menu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		14071D5D80EE4115DD199FC870A75231 /* Voodu-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Voodu-Info.plist"; sourceTree = "<group>"; };
-		15399A3F8D9697A78C0CF39986EB680A /* ContextMenuBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuBuilder.swift; sourceTree = "<group>"; };
-		1679E20AC048822D9D346F1499507AD0 /* Voodu.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Voodu.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		1E1DD6DF7D84E7B3823DC27900EFAAD4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		228208BB1AE297CFEF8B7DF2A1402458 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		229D35756FB7F5C71D0C5DB6E7EEB6A5 /* ContextMenuData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuData.swift; sourceTree = "<group>"; };
-		22F7656DCD1001D54520898890F2BCB5 /* ShortcutMenuBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShortcutMenuBuilder.swift; sourceTree = "<group>"; };
-		23AAD74B72DA94045D0EB2A717601B04 /* Voodu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Voodu.release.xcconfig; sourceTree = "<group>"; };
-		23FACE2FE3FEE37B378E176ED1EEF5E9 /* UIButton+MenuTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIButton+MenuTarget.swift"; sourceTree = "<group>"; };
-		29114A129A7D98F63230BD0C6F0E4D2E /* ContextMenuCollectionInteraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuCollectionInteraction.swift; sourceTree = "<group>"; };
+		19CA4DC4A8C7F78413835F59A78ACAF6 /* UIApplication+ShortcutMenu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIApplication+ShortcutMenu.swift"; sourceTree = "<group>"; };
+		21788F5266D5E395137CE70A1AEECE4D /* ContextMenu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
+		264471951C901AF3D108EADA0D9524F1 /* Menu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		2C78639BFF45D4B95C4B0EEA63D987C5 /* Voodu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Voodu-umbrella.h"; sourceTree = "<group>"; };
+		2D07319FA8C5DDF0609CBAA22F1279FA /* ContextMenuBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuBuilder.swift; sourceTree = "<group>"; };
 		30D1BE65A1742871193BC805B47D3745 /* Pods-Voodu_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Voodu_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		319028B4F045BDBC068195B6F640EE55 /* ContextMenuTableInteraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuTableInteraction.swift; sourceTree = "<group>"; };
+		34FF69BA6DF0E9B222FE27C92A61C577 /* ContextMenuTableInteraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuTableInteraction.swift; sourceTree = "<group>"; };
+		47C5CFA8EC0C8A8B7DCF96E6C1ABF90E /* Voodu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Voodu.debug.xcconfig; sourceTree = "<group>"; };
+		49B47BA6ABC8A8D1AB2200A3D2B3572E /* MenuTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuTarget.swift; sourceTree = "<group>"; };
 		4B57FD24F47F0BE3EDE4D3D9878EA775 /* Pods-Voodu_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Voodu_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		546BF319B3B3528C2EEBD310C85F9393 /* Pods-Voodu_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Voodu_Example-dummy.m"; sourceTree = "<group>"; };
-		588B1A99CEEFD2C708B8D9BCC1AF8ED5 /* ContextMenu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
-		5EA958A85A5542077163BF1D0FAA5218 /* MenuBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuBuilder.swift; sourceTree = "<group>"; };
+		58AB6E6C1031508D058CFE1F4A29826A /* Voodu.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Voodu.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		61BC67222AC7114ED77C0C5A6C5CED59 /* MenuBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuBuilder.swift; sourceTree = "<group>"; };
+		6B3CE8FB4C20BC59341A2E7A4E7FFBDF /* ContextMenuData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuData.swift; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		753703A69FFF12CF574C62BEFAABBD9A /* Voodu-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Voodu-Info.plist"; sourceTree = "<group>"; };
 		79317D287B0B0645190D160C4B4349C7 /* Pods-Voodu_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Voodu_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		79F4A1DD626A605AD3410FE4B27A9AA4 /* Pods-Voodu_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Voodu_Example"; path = Pods_Voodu_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C4AD870B32F23B3BB698840B419FFB3 /* MenuElementContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuElementContainer.swift; path = Sources/Voodu/MenuElementContainer.swift; sourceTree = "<group>"; };
-		80215323B2F6920A3D422ED1B6ECFB54 /* UIApplication+ShortcutMenu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIApplication+ShortcutMenu.swift"; sourceTree = "<group>"; };
-		816D539F5FEA55C3BC7830B68165BCCC /* Voodu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Voodu.modulemap; sourceTree = "<group>"; };
 		82942449A687AB56D432D9FADE004E67 /* Pods-Voodu_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Voodu_Tests-dummy.m"; sourceTree = "<group>"; };
 		843DB2D5A6A18FD5E0A751B46859EFC1 /* Pods-Voodu_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Voodu_Tests-Info.plist"; sourceTree = "<group>"; };
+		968114A8A06E0284B6E4ACDAB2991982 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		974E3458ADA8E08CFDA53AB7EC685BB4 /* Voodu */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Voodu; path = Voodu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		97D8BDD46C380F0207D9C7C92963DE1E /* ActionBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActionBuilder.swift; path = Sources/Voodu/ActionBuilder.swift; sourceTree = "<group>"; };
+		9AA482CA9B474508C88F4CB01D7F98E0 /* MenuInteraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuInteraction.swift; sourceTree = "<group>"; };
+		9AFB4D438D41E39C20339230F8D1EA17 /* ContextMenuInteraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuInteraction.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A34B0F25ED4BA5C2F9A62F5FE2D063D8 /* ContextMenuCollectionInteraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuCollectionInteraction.swift; sourceTree = "<group>"; };
+		AABFCE309A6E6A7E127D4273798AEDFB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		AE3E3F3B6CB926CAB2F23211F339CE08 /* Voodu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Voodu-prefix.pch"; sourceTree = "<group>"; };
 		AF5354C04F61C84909A4C80C8240A8B6 /* Pods-Voodu_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Voodu_Example.modulemap"; sourceTree = "<group>"; };
+		B73FB517B8F45D4F87539B2F21F93045 /* Voodu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Voodu.modulemap; sourceTree = "<group>"; };
+		BCEBC3D75F7A31277B09BB811CEC0CE4 /* ActionBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActionBuilder.swift; path = Sources/Core/ActionBuilder.swift; sourceTree = "<group>"; };
 		BE44460E8D67D4ACE27A04F29296246D /* Pods-Voodu_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Voodu_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		C004ADD094CE26ECD7ED72DAFAE25AD1 /* Pods-Voodu_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Voodu_Tests-umbrella.h"; sourceTree = "<group>"; };
-		C0E34ABA2C7E719BE4473CC31F2E4CB0 /* Voodu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Voodu-umbrella.h"; sourceTree = "<group>"; };
-		C66C676FCD6AC298FF7804288716C8F9 /* ContextMenuInteraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuInteraction.swift; sourceTree = "<group>"; };
+		C347F1F1DBBDE88633D41798ED19895A /* ContextMenuInteractionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuInteractionDelegate.swift; sourceTree = "<group>"; };
 		C6E07D6588B626DB4A47EDC776216C19 /* Pods-Voodu_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Voodu_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		CC77BC964A05505F95626EAEC1964136 /* Pods-Voodu_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Voodu_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		CD86F6FF10DF7990802FB6D5FAC77943 /* MenuTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuTarget.swift; sourceTree = "<group>"; };
-		D479E92EE0CDBDF404313672064630F0 /* Voodu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Voodu-dummy.m"; sourceTree = "<group>"; };
-		DEC94134D427C0F3C9A111CE0638A4A0 /* ContextMenuInteractionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuInteractionDelegate.swift; sourceTree = "<group>"; };
+		CF7F80BBFFB67386C18DD320B7AF7A1D /* UIButton+MenuTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIButton+MenuTarget.swift"; sourceTree = "<group>"; };
+		D16E4EB7F14C26C00A12A5E2045A588C /* Voodu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Voodu-dummy.m"; sourceTree = "<group>"; };
 		E14BD7A437AD45CAF873151E43693831 /* Pods-Voodu_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Voodu_Example-umbrella.h"; sourceTree = "<group>"; };
-		E2E5F1DC8ECA06E401E065F06471819A /* UIBarButtonItem+MenuTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+MenuTarget.swift"; sourceTree = "<group>"; };
-		E398B4548C191AB81C8DA37D1CFC602C /* ShortcutMenuItemBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShortcutMenuItemBuilder.swift; sourceTree = "<group>"; };
-		E3F885032364CEAEC3DD5ABD832935AB /* Voodu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Voodu-prefix.pch"; sourceTree = "<group>"; };
 		EA29E30FDB1887597EABA341F5227D7F /* Pods-Voodu_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Voodu_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		EBA6D8DA4C6AC7E028DF05D30CB5B405 /* Pods-Voodu_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Voodu_Tests"; path = Pods_Voodu_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3ADA713FE3C214AB639B5F57E8F226A /* Voodu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Voodu.debug.xcconfig; sourceTree = "<group>"; };
+		EE4C64F26BE667F9722E38DD54F80599 /* Voodu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Voodu.release.xcconfig; sourceTree = "<group>"; };
+		EFF9A890EE15D1278D3E136F9DFB3671 /* ShortcutMenuItemBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShortcutMenuItemBuilder.swift; sourceTree = "<group>"; };
+		F0773D34377DCEEBDD2EA10D93F13F27 /* UIBarButtonItem+MenuTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+MenuTarget.swift"; sourceTree = "<group>"; };
 		F7A13A888ECF49B2E4074A1AD437FF74 /* Pods-Voodu_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Voodu_Example-Info.plist"; sourceTree = "<group>"; };
+		F802B168112FFB425BBC2AF89BF67EC4 /* ContextMenuTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContextMenuTarget.swift; sourceTree = "<group>"; };
 		FADAEC8A8AFD808A06357F0074B8395B /* Pods-Voodu_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Voodu_Example.release.xcconfig"; sourceTree = "<group>"; };
-		FAF0B78BC2499A3D952C4427D3CDCD63 /* MenuInteraction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuInteraction.swift; sourceTree = "<group>"; };
+		FCD3DBBB25709CB5E9AE126FFBCCA7D1 /* MenuElementContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuElementContainer.swift; path = Sources/Core/MenuElementContainer.swift; sourceTree = "<group>"; };
 		FDC9F0FB8A24DC26B77E5FD79BE80243 /* Pods-Voodu_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Voodu_Example-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,29 +136,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0ABC041338E3EE46F0B2014F8C8540FA /* Support Files */ = {
+		0B173C99500FA82FF66A0E62436E5B93 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				816D539F5FEA55C3BC7830B68165BCCC /* Voodu.modulemap */,
-				D479E92EE0CDBDF404313672064630F0 /* Voodu-dummy.m */,
-				14071D5D80EE4115DD199FC870A75231 /* Voodu-Info.plist */,
-				E3F885032364CEAEC3DD5ABD832935AB /* Voodu-prefix.pch */,
-				C0E34ABA2C7E719BE4473CC31F2E4CB0 /* Voodu-umbrella.h */,
-				F3ADA713FE3C214AB639B5F57E8F226A /* Voodu.debug.xcconfig */,
-				23AAD74B72DA94045D0EB2A717601B04 /* Voodu.release.xcconfig */,
+				264471951C901AF3D108EADA0D9524F1 /* Menu.swift */,
+				61BC67222AC7114ED77C0C5A6C5CED59 /* MenuBuilder.swift */,
+				9AA482CA9B474508C88F4CB01D7F98E0 /* MenuInteraction.swift */,
+				49B47BA6ABC8A8D1AB2200A3D2B3572E /* MenuTarget.swift */,
+				F0773D34377DCEEBDD2EA10D93F13F27 /* UIBarButtonItem+MenuTarget.swift */,
+				CF7F80BBFFB67386C18DD320B7AF7A1D /* UIButton+MenuTarget.swift */,
+			);
+			name = Menu;
+			path = Sources/Core/Menu;
+			sourceTree = "<group>";
+		};
+		2404E001AE9BB3507B24CADCD40C4268 /* Voodu */ = {
+			isa = PBXGroup;
+			children = (
+				BCEBC3D75F7A31277B09BB811CEC0CE4 /* ActionBuilder.swift */,
+				FCD3DBBB25709CB5E9AE126FFBCCA7D1 /* MenuElementContainer.swift */,
+				A98BF9FEDCF65D19D3189873F2DB7287 /* ContextMenu */,
+				0B173C99500FA82FF66A0E62436E5B93 /* Menu */,
+				335EFF3838972F72414CD9582550C735 /* Pod */,
+				3EABFF29AAFD34616A44C970DF9909CE /* ShortcutMenu */,
+				537318A41D780046561F7F2DFD35348C /* Support Files */,
+			);
+			name = Voodu;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		335EFF3838972F72414CD9582550C735 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				968114A8A06E0284B6E4ACDAB2991982 /* LICENSE */,
+				AABFCE309A6E6A7E127D4273798AEDFB /* README.md */,
+				58AB6E6C1031508D058CFE1F4A29826A /* Voodu.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		3EABFF29AAFD34616A44C970DF9909CE /* ShortcutMenu */ = {
+			isa = PBXGroup;
+			children = (
+				0BD57694224898547C68787A99E3FD2C /* ShortcutMenuBuilder.swift */,
+				EFF9A890EE15D1278D3E136F9DFB3671 /* ShortcutMenuItemBuilder.swift */,
+				19CA4DC4A8C7F78413835F59A78ACAF6 /* UIApplication+ShortcutMenu.swift */,
+			);
+			name = ShortcutMenu;
+			path = Sources/Core/ShortcutMenu;
+			sourceTree = "<group>";
+		};
+		537318A41D780046561F7F2DFD35348C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B73FB517B8F45D4F87539B2F21F93045 /* Voodu.modulemap */,
+				D16E4EB7F14C26C00A12A5E2045A588C /* Voodu-dummy.m */,
+				753703A69FFF12CF574C62BEFAABBD9A /* Voodu-Info.plist */,
+				AE3E3F3B6CB926CAB2F23211F339CE08 /* Voodu-prefix.pch */,
+				2C78639BFF45D4B95C4B0EEA63D987C5 /* Voodu-umbrella.h */,
+				47C5CFA8EC0C8A8B7DCF96E6C1ABF90E /* Voodu.debug.xcconfig */,
+				EE4C64F26BE667F9722E38DD54F80599 /* Voodu.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/Voodu";
-			sourceTree = "<group>";
-		};
-		3A401AD7749E8E329DF60B9F4616449C /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				1E1DD6DF7D84E7B3823DC27900EFAAD4 /* LICENSE */,
-				228208BB1AE297CFEF8B7DF2A1402458 /* README.md */,
-				1679E20AC048822D9D346F1499507AD0 /* Voodu.podspec */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -167,17 +207,6 @@
 				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		770630EC7B618DC876A4929CF5DD02A8 /* ShortcutMenu */ = {
-			isa = PBXGroup;
-			children = (
-				22F7656DCD1001D54520898890F2BCB5 /* ShortcutMenuBuilder.swift */,
-				E398B4548C191AB81C8DA37D1CFC602C /* ShortcutMenuItemBuilder.swift */,
-				80215323B2F6920A3D422ED1B6ECFB54 /* UIApplication+ShortcutMenu.swift */,
-			);
-			name = ShortcutMenu;
-			path = Sources/Voodu/ShortcutMenu;
 			sourceTree = "<group>";
 		};
 		9A75CE782452CAFBB31BBC908ADB16FB /* Targets Support Files */ = {
@@ -199,6 +228,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A98BF9FEDCF65D19D3189873F2DB7287 /* ContextMenu */ = {
+			isa = PBXGroup;
+			children = (
+				21788F5266D5E395137CE70A1AEECE4D /* ContextMenu.swift */,
+				2D07319FA8C5DDF0609CBAA22F1279FA /* ContextMenuBuilder.swift */,
+				A34B0F25ED4BA5C2F9A62F5FE2D063D8 /* ContextMenuCollectionInteraction.swift */,
+				6B3CE8FB4C20BC59341A2E7A4E7FFBDF /* ContextMenuData.swift */,
+				9AFB4D438D41E39C20339230F8D1EA17 /* ContextMenuInteraction.swift */,
+				C347F1F1DBBDE88633D41798ED19895A /* ContextMenuInteractionDelegate.swift */,
+				34FF69BA6DF0E9B222FE27C92A61C577 /* ContextMenuTableInteraction.swift */,
+				F802B168112FFB425BBC2AF89BF67EC4 /* ContextMenuTarget.swift */,
+			);
+			name = ContextMenu;
+			path = Sources/Core/ContextMenu;
+			sourceTree = "<group>";
+		};
 		B541554A3CE3FE3E0ECBB96E7764DA2E /* Pods-Voodu_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,36 +259,6 @@
 			);
 			name = "Pods-Voodu_Example";
 			path = "Target Support Files/Pods-Voodu_Example";
-			sourceTree = "<group>";
-		};
-		B7999F3E26182AA8153B01C4CAD38DC4 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				11F144D43EF208A2B7557DC4D78078D8 /* Menu.swift */,
-				5EA958A85A5542077163BF1D0FAA5218 /* MenuBuilder.swift */,
-				FAF0B78BC2499A3D952C4427D3CDCD63 /* MenuInteraction.swift */,
-				CD86F6FF10DF7990802FB6D5FAC77943 /* MenuTarget.swift */,
-				E2E5F1DC8ECA06E401E065F06471819A /* UIBarButtonItem+MenuTarget.swift */,
-				23FACE2FE3FEE37B378E176ED1EEF5E9 /* UIButton+MenuTarget.swift */,
-			);
-			name = Menu;
-			path = Sources/Voodu/Menu;
-			sourceTree = "<group>";
-		};
-		CADE144CB46FEADB776B9DE1D536AA6E /* ContextMenu */ = {
-			isa = PBXGroup;
-			children = (
-				588B1A99CEEFD2C708B8D9BCC1AF8ED5 /* ContextMenu.swift */,
-				15399A3F8D9697A78C0CF39986EB680A /* ContextMenuBuilder.swift */,
-				29114A129A7D98F63230BD0C6F0E4D2E /* ContextMenuCollectionInteraction.swift */,
-				229D35756FB7F5C71D0C5DB6E7EEB6A5 /* ContextMenuData.swift */,
-				C66C676FCD6AC298FF7804288716C8F9 /* ContextMenuInteraction.swift */,
-				DEC94134D427C0F3C9A111CE0638A4A0 /* ContextMenuInteractionDelegate.swift */,
-				319028B4F045BDBC068195B6F640EE55 /* ContextMenuTableInteraction.swift */,
-				02BA330F6176674BA6FB8BF0E1164E82 /* ContextMenuTarget.swift */,
-			);
-			name = ContextMenu;
-			path = Sources/Voodu/ContextMenu;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -268,7 +283,7 @@
 		E2ECD0F7C0ED31C794B651FE8350D40C /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FFB6B44B076837D4B002CF56D19ACFF8 /* Voodu */,
+				2404E001AE9BB3507B24CADCD40C4268 /* Voodu */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -287,21 +302,6 @@
 			);
 			name = "Pods-Voodu_Tests";
 			path = "Target Support Files/Pods-Voodu_Tests";
-			sourceTree = "<group>";
-		};
-		FFB6B44B076837D4B002CF56D19ACFF8 /* Voodu */ = {
-			isa = PBXGroup;
-			children = (
-				97D8BDD46C380F0207D9C7C92963DE1E /* ActionBuilder.swift */,
-				7C4AD870B32F23B3BB698840B419FFB3 /* MenuElementContainer.swift */,
-				CADE144CB46FEADB776B9DE1D536AA6E /* ContextMenu */,
-				B7999F3E26182AA8153B01C4CAD38DC4 /* Menu */,
-				3A401AD7749E8E329DF60B9F4616449C /* Pod */,
-				770630EC7B618DC876A4929CF5DD02A8 /* ShortcutMenu */,
-				0ABC041338E3EE46F0B2014F8C8540FA /* Support Files */,
-			);
-			name = Voodu;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,8 +396,8 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -464,7 +464,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C10276E649257884A0BD520F61BA4857 /* ActionBuilder.swift in Sources */,
+				46A733634A21820EDD1DAB88864D2F42 /* ActionBuilder.swift in Sources */,
 				BE399300271F19503AFE92AD31464C11 /* ContextMenu.swift in Sources */,
 				B5EC6DC9E6BA2328E3DC6D7526C4E4F6 /* ContextMenuBuilder.swift in Sources */,
 				423F7D4D5411B846961B8AEA0FB79393 /* ContextMenuCollectionInteraction.swift in Sources */,
@@ -475,7 +475,7 @@
 				005EA7CD40CFF700A773717B210A3883 /* ContextMenuTarget.swift in Sources */,
 				447E4A33F4ADDFD6E8F0EC1DF6A539D6 /* Menu.swift in Sources */,
 				1AFEC03C330A5673A9827E6373F4DF2E /* MenuBuilder.swift in Sources */,
-				828D43901312B5EC33396B056A10B14F /* MenuElementContainer.swift in Sources */,
+				4C4603CE8DCCEBE7B534AF549ADA27FB /* MenuElementContainer.swift in Sources */,
 				295F184C7992F0288397263A108CAF1C /* MenuInteraction.swift in Sources */,
 				A2F8A0AC19093B81E9A01DBF2062B0A1 /* MenuTarget.swift in Sources */,
 				AA7736C4A3F23A526412E702DE0E63D3 /* ShortcutMenuBuilder.swift in Sources */,
@@ -526,6 +526,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Voodu_Example/Pods-Voodu_Example.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -561,6 +562,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Voodu_Example/Pods-Voodu_Example.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -595,6 +597,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Voodu_Tests/Pods-Voodu_Tests.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -629,6 +632,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Voodu_Tests/Pods-Voodu_Tests.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -773,7 +777,7 @@
 		};
 		AF4F7033404B16F84697A0AE51768CC7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23AAD74B72DA94045D0EB2A717601B04 /* Voodu.release.xcconfig */;
+			baseConfigurationReference = EE4C64F26BE667F9722E38DD54F80599 /* Voodu.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -791,6 +795,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Voodu/Voodu.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_MODULE_NAME = Voodu;
 				PRODUCT_NAME = Voodu;
 				SDKROOT = iphoneos;
@@ -806,7 +811,7 @@
 		};
 		DE086D2E708522C2660319F27AE28493 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3ADA713FE3C214AB639B5F57E8F226A /* Voodu.debug.xcconfig */;
+			baseConfigurationReference = 47C5CFA8EC0C8A8B7DCF96E6C1ABF90E /* Voodu.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -824,6 +829,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Voodu/Voodu.modulemap";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_MODULE_NAME = Voodu;
 				PRODUCT_NAME = Voodu;
 				SDKROOT = iphoneos;
