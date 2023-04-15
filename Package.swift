@@ -5,23 +5,23 @@ import PackageDescription
 let package = Package(
     name: "Voodu",
     platforms: [.iOS(.v13)],
-    swiftLanguageVersions: [.v5],
-    dependencies: [],
     products: [
 
         .library(
             name: "Voodu", 
-            targets: ["Core"]
+            targets: ["Voodu"]
         )
 
     ],
+    dependencies: [],
     targets: [
 
         .target(
-            name: "Core",
-            path: "Sources/Core",
-            dependencies: []
+            name: "Voodu",
+            dependencies: [],
+            path: "Sources/Core"
         )
 
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )

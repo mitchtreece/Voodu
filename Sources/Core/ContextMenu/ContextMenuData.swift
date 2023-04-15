@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// A context menu data container.
 public struct ContextMenuData {
