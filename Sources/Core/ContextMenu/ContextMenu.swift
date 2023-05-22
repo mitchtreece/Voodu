@@ -122,6 +122,28 @@ public class ContextMenu {
         return ContextMenuCollectionInteraction(contextMenu: self)
     }
     
+    // MARK: Helpers
+    
+    /// Returns a menu representation of this context menu.
+    ///
+    /// - returns: A menu.
+    public func asMenu() -> Menu {
+        
+        return Menu { menu in
+            
+            menu.title = self.title ?? ""
+            menu.identifier = self.identifier
+            menu.options = self.options
+            menu.elements = self.elements
+
+            if #available(iOS 16, *) {
+                menu.elementSize = self.elementSize
+            }
+            
+        }
+        
+    }
+    
     // MARK: Private
 
     internal func setupContextMenuInteraction() -> UIContextMenuInteraction {

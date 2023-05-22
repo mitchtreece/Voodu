@@ -76,6 +76,28 @@ public class Menu: NSObject {
         return MenuInteraction(menu: self)
     }
     
+    // MARK: Helpers
+    
+    /// Returns a context menu representation of this menu.
+    ///
+    /// - returns: A context menu.
+    public func asContextMenu() -> ContextMenu {
+        
+        return ContextMenu { _, menu in
+            
+            menu.title = self.title
+            menu.identifier = self.identifier
+            menu.options = self.options
+            menu.elements = self.elements
+            
+            if #available(iOS 16, *) {
+                menu.elementSize = self.elementSize
+            }
+            
+        }
+        
+    }
+    
     // MARK: Private
     
     internal func setup(target: MenuTarget) {
