@@ -2,10 +2,10 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/Version-1.1.1-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
+![Version](https://img.shields.io/badge/Version-1.2.0-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
 ![iOS](https://img.shields.io/badge/iOS-13+-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
 ![Swift](https://img.shields.io/badge/Swift-5-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
-![Xcode](https://img.shields.io/badge/Xcode-14-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
+![Xcode](https://img.shields.io/badge/Xcode-15-A99CCF.svg?style=for-the-badge&labelColor=806BBA)
 
 </div>
 
@@ -25,7 +25,7 @@ If you're adding Voodu as a dependency of your own Swift package, just add a pac
 .package(
     name: "Voodu",
     url: "https://github.com/mitchtreece/Voodu",
-    .upToNextMajor(from: .init(1, 1, 0))
+    .upToNextMajor(from: .init(1, 0, 0))
 )
 ```
 
