@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
     }
 
     private func setupMenus() {
-        
+                        
         self.optionsViewMenu = self.optionsView.addContextMenu { [weak self] data, menu in
 
             guard let strongSelf = self else { return }
@@ -125,7 +125,7 @@ class MainViewController: UIViewController {
                 }
 
             }
-            
+                        
             // Options Button
 
             self.optionsButton.showsMenuAsPrimaryAction = true
